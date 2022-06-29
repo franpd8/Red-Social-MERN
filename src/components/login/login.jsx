@@ -8,7 +8,11 @@ const Login = () => {
         email:'',
         password:''
     })
+
     const {email,password} = formData
+
+
+      
     const dispatch = useDispatch()
     const onChange = (e)=>{
         setFormData((prevState)=> ({
@@ -20,6 +24,9 @@ const Login = () => {
         e.preventDefault()
         console.log('formData',formData)
         dispatch(login(formData))    }
+
+
+
   return (
     <form onSubmit={onSubmit}>
         <div className="userLabel">Email</div>
