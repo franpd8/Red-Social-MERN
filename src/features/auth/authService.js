@@ -27,7 +27,8 @@ const logout = async () => {
         // borrar de localStorage
       localStorage.removeItem("user");
     }
-    return res.data;
+    console.log(res.data.message)
+    return res.data.message;
   };
   
 

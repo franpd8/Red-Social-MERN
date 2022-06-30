@@ -1,9 +1,11 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { logout } from "../../features/auth/authSlice";
+import { logout,reset } from "../../features/auth/authSlice";
+import { notification } from "antd";
 
 const Header = () => {
-  const { user } = useSelector((state) => state.auth);
+  const { user,message } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -11,6 +13,9 @@ const Header = () => {
     e.preventDefault();
     dispatch(logout());
     navigate("/login");
+  
+    notification.success({  message: "Desconectado con éxito :) ", description: message });
+    // dispatch(reset());
   };
 
   return (

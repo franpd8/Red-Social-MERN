@@ -30,9 +30,11 @@ export const login = createAsyncThunk("auth/login", async (user,thunkAPI) => {
   }
 });
 
-export const logout = createAsyncThunk("auth/logout", async () => {
+export const logout = createAsyncThunk("auth/logout", async (thunkAPI) => {
   try {
+    console.log(authService.logout())
     return await authService.logout();
+
   } catch (error) {
     console.error(error);
   }
@@ -60,12 +62,13 @@ export const authSlice = createSlice({
         state.message = action.payload;
       })
     // borrar de estado
-    .addCase(logout.fulfilled, (state) => {
+    .addCase(logout.fulfilled, (state,action) => {
       state.user = null
+      state.message = action.payload
 })
 .addCase(register.fulfilled, (state, action) => {
   state.isSuccess = true;
-  state.message = action.payload.message;
+  state.message = action.payload
 })
 .addCase(register.rejected, (state, action) => {
   state.isError = true;
