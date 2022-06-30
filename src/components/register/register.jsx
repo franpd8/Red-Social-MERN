@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { register } from "../../features/auth/authSlice";
+import { register,reset } from "../../features/auth/authSlice";
 import { notification } from "antd";
 
 const Register = () => {
@@ -17,17 +17,18 @@ const Register = () => {
   useEffect(() => {
     if (isSuccess) {
       notification.success({
-        message: "Success",
+        message: "Éxito :)",
         description: message,
       });
     }
-    
+
     if (isError) {
         notification.error({ 
-            message: "Error", 
+            message: "Error :( ", 
             description: message 
         });
       }
+      dispatch(reset())
     
 }, [isSuccess, isError, message]);
 
