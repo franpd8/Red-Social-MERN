@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom'
 import {login, reset} from '../../features/auth/authSlice'
 import { notification } from "antd";
 
-
 const Login = () => {
     const [formData, setFormData] = useState({
         email:'',

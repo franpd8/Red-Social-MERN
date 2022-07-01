@@ -15,6 +15,7 @@ const Header = () => {
     navigate("/login");
   
     notification.success({  message: "Desconectado con éxito :) ", description: message });
+    console.log(message)
     // dispatch(reset());
   };
 
