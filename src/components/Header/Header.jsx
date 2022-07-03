@@ -28,17 +28,20 @@ const Header = () => {
     }
   };
   const onSearch = (value) => {
-    console.log(value);
-
+    console.log("valor de la busqueda",value);
     navigate('/search/'+ value)
   } 
 
+  const onChange = (value) => {
+    console.log("valor de la busqueda",value);
+    navigate('/search/'+ value)
+  };
 
   const onLogout = (e) => {
     e.preventDefault();
     dispatch(logout());
     navigate("/login");
-    notification.success({  message: "Desconectado con éxito :) ", description: message });
+    notification.success({ message: "Desconectado con éxito :) ", description: message });
     // openNotification('Success','Logout succesfull :)','top')
     console.log(message)
     // dispatch(reset());
@@ -51,7 +54,8 @@ const Header = () => {
      
       <span> <Link to="/">home</Link></span>
       {/* <input onKeyUp={handleChange} placeholder="search post" name="text" /> */}
-      <Search placeholder="input search text" className="searchBar" onSearch={onSearch} enterButton />
+      {/* <Search placeholder="input search text" className="searchBar" onSearch={onSearch} enterButton /> */}
+      <Search placeholder="input with clear icon" allowClear onChange={onChange} />
     
       <div>
         {user ? (

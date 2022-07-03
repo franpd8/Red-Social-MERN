@@ -29,7 +29,10 @@ export const getPostById = createAsyncThunk("posts/getPostById", async (id) => {
  //  *** Get Post by Name ****
 export const getPostByName = createAsyncThunk("posts/getPostByName", async (postName) => {
     try {
+     
+
       return await postsService.getPostByName(postName);
+
     } catch (error) {
       console.error(error);
     }

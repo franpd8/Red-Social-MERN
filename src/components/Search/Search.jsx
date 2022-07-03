@@ -5,18 +5,18 @@ import { getPostByName } from "../../features/posts/postsSlice";
 import Post from "../Post/Post";
 
 const Search = () => {
-    const { postName } = useParams();
+    const { title } = useParams();
     const dispatch = useDispatch()
 
     useEffect(() => {
-        console.log(postName);
-        dispatch(getPostByName(postName))
-      }, [postName]);
+        dispatch(getPostByName(title))
+      }, [title]);
     
     return (
       <div>
           Search Results
-          <Post/> </div>
+          <Post/>
+          </div>
     )
   }
   

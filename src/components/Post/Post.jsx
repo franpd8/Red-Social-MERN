@@ -6,6 +6,8 @@ const Post = () => {
 
     const post = posts.map( (post)=> 
     {
+      console.log(post)
+
         return (
       
             <div className="post" key ={post._id}>

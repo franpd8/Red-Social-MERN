@@ -7,7 +7,7 @@ const PostDetail = () => {
   const dispatch = useDispatch()
   const {post} = useSelector((state) => state.posts )
   // console.log(post.comments)
-
+console.log(post)
   useEffect(() => {
     dispatch(getPostById(id))
   }, [])
@@ -16,6 +16,7 @@ const PostDetail = () => {
   return <div>Post Detail
       <h3>Titulo: {post.title}</h3>
       <p> Descripcion: {post.body}</p>
+      {/* <p> by: {post.userId.hat}</p> */}
       {/* <p> Comentario: {post.comments}</p> */}
   </div>;
 };
