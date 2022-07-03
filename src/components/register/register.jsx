@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { register, reset } from "../../features/auth/authSlice";
 import { notification } from "antd";
 import { Button, Form, Input } from "antd";
-import { MailOutlined, LockOutlined, UserOutlined } from "@ant-design/icons";
+
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -33,41 +33,22 @@ const Register = () => {
     dispatch(reset());
   }, [isSuccess, isError, message]);
 
-//   comentardesde aqui
-// --------------------------------
-//   const onFinish = (values) => {
-//     console.log("Success:", values);
-//     dispatch(register(values))
 
-//   };
+  const onFinish = (values) => {
+    console.log("Success:", values);
+    dispatch(register(values))
 
-//   const onFinishFailed = (errorInfo) => {
-//     console.log("Failed:", errorInfo);
-//   };
+  };
 
-    const onChange = (e) => {
-      setFormData((prevState) => ({
-        ...prevState,
-        [e.target.name]: e.target.value,
-      }));
-    };
-    const onSubmit = (e) => {
-      e.preventDefault();
-      if (password !== password2) {
-        return notification.error({
-          message: "Error",
-          description: "Passwords do not match",
-        });
-      } else {
-        return dispatch(register(formData));
-      }
-    };
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+  };
 
   return (
       
     <>
-     {/* <><Form
-        name="signup"
+     <><Form
+        name="register"
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
         labelCol={{
@@ -78,17 +59,17 @@ const Register = () => {
         }}
       >
         <Form.Item
-          label="Username"
-          name="username"
+          label="Name"
+          name="name"
           rules={[
             {
               required: true,
-              message: "Username is necessary",
+              message: "Name is necessary",
             },
           ]}
         >
           <Input
-            placeholder="Enter your username here"
+            placeholder="Enter your name here"
           />
         </Form.Item>
         <Form.Item
@@ -160,40 +141,8 @@ const Register = () => {
             Crear cuenta
           </Button>
         </Form.Item>
-        <Form.Item>
-          <Button
-            style={{ width: "100%" }}
-            type="default"
-            className="login-form-button"
-          >
-            Iniciar sesion
-          </Button>
-        </Form.Item>
-      </Form> </> */}
-
-    <form onSubmit={onSubmit}>
-      <div className="userLabel">Name</div>
-      <input type="text" name="name" value={name} onChange={onChange}   required/>
-      <div className="userLabel">Email</div>
-      <input type="email" name="email" value={email} onChange={onChange}   required />
-      <div className="userLabel">Password</div>
-      <input
-        type="password"
-        name="password"
-        value={password}
-        required
-        onChange={onChange}
-      />
-      <div className="userLabel">Confirm Password</div>
-      <input
-        type="password"
-        name="password2"
-        value={password2}
-        required
-        onChange={onChange}
-      />
-      <button type="submit">Register</button>
-    </form>
+       
+      </Form> </>
     </>
   )
 };

@@ -8,16 +8,26 @@ const Header = () => {
   const { user,message } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const openNotification = (type, messageTitle, placement) => {
+    notification[type]({
+      className: "notification-class",
+      message: messageTitle,
+      description: message,
+      placement,
+    });
+  };
 
   const onLogout = (e) => {
     e.preventDefault();
     dispatch(logout());
     navigate("/login");
-  
     notification.success({  message: "Desconectado con éxito :) ", description: message });
+    // openNotification('Success','Logout succesfull :)','top')
     console.log(message)
     // dispatch(reset());
   };
+
+  
 
   return (
     <nav>
