@@ -7,7 +7,7 @@ import Header from "./components/Header/Header";
 import Profile from "./components/Profile/Profile";
 import PostDetail from "./components/Home/Posts/PostDetail/PostDetail";
 import Search from "./components/Search/Search";
-
+import Users from "./components/Users/Users";
 
 function App() {
   return (
@@ -21,6 +21,8 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/post/:id" element={<PostDetail />} />
           <Route path="/search/:title" element={<Search />} />
+          <Route path="/users" element={<Users />} />
+
         </Routes>
       </BrowserRouter>
     </div>

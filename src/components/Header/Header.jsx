@@ -36,9 +36,12 @@ const Header = () => {
 
   return (
     <nav>
-      <span>
+      <p>
         <Link to="/">home</Link>
-      </span>
+      </p>
+      <p>
+        <Link to="/users">userlist</Link>
+      </p>
 
       <Search
         placeholder="Search for a post"

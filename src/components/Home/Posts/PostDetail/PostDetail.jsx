@@ -25,10 +25,6 @@ const PostDetail = () => {
       <p> Descripcion: {post.body}</p>
       Comentario: <div className="commentSection">
         <CommenList/>
-
-
-        
-      
         </div>
     </div>
   );
