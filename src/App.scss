@@ -1,5 +1,30 @@
 @import "antd/dist/antd.css";
 
+
+.home{
+  border:2px solid black;
+  background-color: beige;
+}
+.home__posts{
+  border:2px solid red;
+  background-color: azure;
+  padding:2em;
+}
+.home__posts__all{
+  border: 2px solid blue;
+  background-color: aquamarine;
+  padding: 1em;
+  display:flex;
+  flex-wrap:wrap;
+}
+
+.post{
+  border: 2px dotted white;
+  background-color: burlywood;
+  margin: 1em 0 ;
+  width: 50%;
+  
+}
 .notification-class{
   width:600px;
   background-color: aqua;
@@ -20,4 +45,12 @@
 .smallIcon__img{
   width:48px;
   height:auto;
+}
+
+.userPosts{
+  border:2px solid red;
+}
+.userPosts__post{
+  border:2px solid orange;
+  width:600px;
 }

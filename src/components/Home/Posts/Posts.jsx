@@ -19,7 +19,7 @@ const Posts = () => {
         return <h1>Cargando post...</h1>;
       }
     return (
-      <div>
+      <div className="home__posts">
           <h2>Posts</h2>
           <Post/>
       </div>

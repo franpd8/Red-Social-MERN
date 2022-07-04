@@ -5,6 +5,7 @@ const user = JSON.parse(localStorage.getItem("user"));
 
 const initialState = {
   user: user ? user : null,
+  userData: {},
   isError: false,
   isSuccess: false,
   message: "",
@@ -41,6 +42,17 @@ export const logout = createAsyncThunk("auth/logout", async (thunkAPI) => {
     console.error(error);
   }
 });
+
+export const getUserInfo = createAsyncThunk("auth/getUserInfo", async (thunkAPI) => {
+  try {
+    console.log("llamando a user info")
+    return await authService.getUserInfo();
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+
 
 export const authSlice = createSlice({
   name: "auth",
@@ -79,8 +91,13 @@ export const authSlice = createSlice({
       .addCase(register.rejected, (state, action) => {
         state.isError = true;
         state.message = action.payload;
-        console.log(action.payload);
-      });
+       
+      })
+
+      //*** Get User Info *** 
+      .addCase(getUserInfo.fulfilled, (state,action) =>{
+        state.userData = action.payload;
+      })
   },
 });
 
