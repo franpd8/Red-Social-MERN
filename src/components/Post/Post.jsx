@@ -1,12 +1,12 @@
 import { useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import moment from "moment";
 
 const Post = () => {
   const { posts } = useSelector((state) => state.posts);
   const post = posts.map((post) => {
     const dateTimeAgo = moment(post.createdAt).fromNow();
-    console.log(post)
+    // console.log(post)
 
     return (
       <div className="post" key={post._id}>

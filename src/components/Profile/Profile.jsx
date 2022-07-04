@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import moment from "moment";
 import { getUserInfo} from "../../features/auth/authSlice";
@@ -7,13 +7,16 @@ import UserPosts from "./UserPosts/UserPosts";
 
 const Profile = () => {
   const { user } = useSelector((state) => state.auth);
-  console.log("usuario", user.user);
-  console.log("usuarios que sigo", user.user.following);
+  // console.log("usuario", user.user);
+  // console.log("usuarios que sigo", user.user.following);
+  const dispatch = useDispatch()
+  
+  const getAllUserInfo = async () => {
+    await dispatch(getUserInfo()); 
+   };
 
   useEffect(() => {
-    getUserInfo()
-    console.log("soy el use Effect de profile")
-   
+    getAllUserInfo()   
   }, [])
   
 

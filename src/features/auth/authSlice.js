@@ -9,6 +9,7 @@ const initialState = {
   isError: false,
   isSuccess: false,
   message: "",
+  isSuccessLogOut:false
 };
 
 export const register = createAsyncThunk(
@@ -45,7 +46,6 @@ export const logout = createAsyncThunk("auth/logout", async (thunkAPI) => {
 
 export const getUserInfo = createAsyncThunk("auth/getUserInfo", async (thunkAPI) => {
   try {
-    console.log("llamando a user info")
     return await authService.getUserInfo();
   } catch (error) {
     console.error(error);
@@ -62,6 +62,7 @@ export const authSlice = createSlice({
       state.isError = false;
       state.isSuccess = false;
       state.message = "";
+      state.isSuccessLogOut= false;
     },
   },
   extraReducers: (builder) => {
@@ -80,6 +81,7 @@ export const authSlice = createSlice({
       // **** Logout ****
       .addCase(logout.fulfilled, (state, action) => {
         state.user = null;
+        state.isSuccessLogOut = true;
         state.message = action.payload;
       })
       // **** Register **** 

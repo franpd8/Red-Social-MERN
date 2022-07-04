@@ -5,7 +5,7 @@ const Following = () => {
   const following = user.user.following?.map((user) => {
     return (
       <div key={user._id}>
-        {console.log("usuario mapeado", user)}
+        {/* {console.log("usuario mapeado", user)} */}
         <p> {user.name}</p>
         <p>
           {" "}
