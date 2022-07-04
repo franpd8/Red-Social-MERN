@@ -22,7 +22,6 @@ const Header = () => {
   const onSearch = (value) => {
     navigate("/search/" + value);
   };
-
   useEffect(() => {
     if (isSuccessLogOut) {
       openNotification("success","Log out Succesfully :)","top")
