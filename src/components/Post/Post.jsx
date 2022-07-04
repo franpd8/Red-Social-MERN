@@ -6,7 +6,6 @@ const Post = () => {
 
     const post = posts.map( (post)=> 
     {
-      console.log(post)
 
         return (
       
