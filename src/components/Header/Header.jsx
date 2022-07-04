@@ -20,20 +20,9 @@ const Header = () => {
     });
   };
 
-  const [text, setText] = useState("");
-  const handleChange = (e) => {
-    setText(e.target.value);
-    if (e.key === "Enter") {
-      console.log(text);
-    }
-  };
   const onSearch = (value) => {
     console.log("valor de la busqueda",value);
-    navigate('/search/'+ value)
-  } 
-
-  const onChange = (value) => {
-    console.log("valor de la busqueda",value);
+    const search= value.toString()
     navigate('/search/'+ value)
   };
 
@@ -55,17 +44,17 @@ const Header = () => {
       <span> <Link to="/">home</Link></span>
       {/* <input onKeyUp={handleChange} placeholder="search post" name="text" /> */}
       {/* <Search placeholder="input search text" className="searchBar" onSearch={onSearch} enterButton /> */}
-      <Search placeholder="input with clear icon" allowClear onChange={onChange} />
+      <Search placeholder="Search for a post" className="searchBar" allowClear onSearch={onSearch} enterButton />
     
       <div>
         {user ? (
           <>
-            <span>
+            <div>
               <Link to="/" onClick={onLogout}>Logout</Link>
-            </span>
-            <span>
-              <Link to="/profile">{user.user.name}</Link>{" "}
-            </span>
+            </div>
+            <div>
+              <Link to="/profile">{user.user.name}'s Profile </Link>{" "}
+            </div>
           </>
         ) : (
           <>

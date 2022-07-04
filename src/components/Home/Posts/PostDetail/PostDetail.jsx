@@ -49,17 +49,21 @@ const PostDetail = () => {
   console.log(post)
   console.log("array de comments", post.comments)
 
+
   // Mapping the comments
 const comment = post.comments?.map(comment => (
   <div key={comment._id}>
       <Comment className="comment-box"
       actions={actions}
-      author={<a>{comment.userId.name}</a>}
+      author={<a>{comment.userId.name}    
+      </a>}
       avatar={<Avatar src="https://joeschmoe.io/api/v1/random" alt="Han Solo" />}
       content={
+        <>
         <p>
           {comment.body}
         </p>
+        </>
       }
       datetime={
         <Tooltip title={moment().format('YYYY-MM-DD HH:mm:ss')}>
@@ -69,13 +73,12 @@ const comment = post.comments?.map(comment => (
     />
   </div>
 ))
- 
   return <div>Post Detail
       <h3>Titulo: {post.title}</h3>
       <p> Descripcion: {post.body}</p>
-      <p> by: {post.userId.name}</p>
       Comentario: <div className="commentSection">{comment}</div>
-      {/* <ReplyComment/> */}
+   
+  
   </div>;
 };
 
