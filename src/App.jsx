@@ -8,6 +8,8 @@ import Profile from "./components/Profile/Profile";
 import PostDetail from "./components/Home/Posts/PostDetail/PostDetail";
 import Search from "./components/Search/Search";
 import Users from "./components/Users/Users";
+import UserDetail from "./components/Users/User/UserDetail.jsx/UserDetail";
+import Posts from "./components/Home/Posts/Posts";
 
 function App() {
   return (
@@ -19,7 +21,9 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/posts" element={<Posts />} />
           <Route path="/post/:id" element={<PostDetail />} />
+          <Route path="/user/:id" element={<UserDetail />} />
           <Route path="/search/:title" element={<Search />} />
           <Route path="/users" element={<Users />} />
 

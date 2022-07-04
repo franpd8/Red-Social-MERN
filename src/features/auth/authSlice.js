@@ -7,7 +7,8 @@ const initialState = {
   isError: false,
   isSuccess: false,
   message: "",
-  isSuccessLogOut:false
+  isSuccessLogOut:false,
+  isLoading:false,
 };
 
 export const register = createAsyncThunk(
@@ -61,6 +62,7 @@ export const authSlice = createSlice({
       state.isSuccess = false;
       state.message = "";
       state.isSuccessLogOut= false;
+      state.isLoading = false;
     },
   },
   extraReducers: (builder) => {
@@ -93,9 +95,16 @@ export const authSlice = createSlice({
       })
 
       //*** Get User Info *** 
+      .addCase(getUserInfo.pending, (state) =>{
+        state.isLoading = true;
+      })
       .addCase(getUserInfo.fulfilled, (state,action) =>{
         state.userData = action.payload;
       })
+
+
+
+      
   },
 });
 

@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 import moment from "moment";
 import { Link } from "react-router-dom";
-const UserPosts = () => {
-  const { userData } = useSelector((state) => state.auth);
+function UserPosts ({userData}) {
+  // const { userData } = useSelector((state) => state.auth);
   // console.log("userData",userData)
   const posts = userData.postIds?.map((post) => {
     const dateTimeAgo = moment(post.createdAt).fromNow();

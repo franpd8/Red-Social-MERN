@@ -4,7 +4,7 @@ import usersService from "./usersService";
 const initialState = {
   users: [],
   isLoading: false,
-  profile:{}
+  userDetails:{}
 };
 
 // *** Functions *** 
@@ -19,9 +19,9 @@ export const getAllUsers = createAsyncThunk("users/getAllUsers", async () => {
 });
 
    //   **** Get Post by ID **** 
-export const getPostById = createAsyncThunk("posts/getPostById", async (id) => {
+export const getUserById = createAsyncThunk("posts/getUserById", async (id) => {
     try {
-      return await usersService.getPostById(id);
+      return await usersService.getUserById(id);
     } catch (error) {
       console.error(error);
     }
@@ -59,11 +59,11 @@ export const usersSlice = createSlice({
       .addCase(getAllUsers.fulfilled, (state, action) => {
         state.users = action.payload;
       })
-    // //   **** Get Post by ID **** 
-    // .addCase(getPostById.fulfilled, (state, action) => {
-    //     state.post = action.payload;
-    //   })
-    // //  *** Get Post by Name ****
+    //   **** Get User by ID **** 
+    .addCase(getUserById.fulfilled, (state, action) => {
+        state.userDetails = action.payload;
+      })
+    //  *** Get Post by Name ****
     // .addCase(getPostByName.fulfilled, (state, action) => {
     //   state.posts = action.payload;
     // });

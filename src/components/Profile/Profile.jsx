@@ -1,25 +1,29 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import moment from "moment";
-import { getUserInfo} from "../../features/auth/authSlice";
+import { getUserInfo, reset} from "../../features/auth/authSlice";
 import Following from "./Following/Following";
 import UserPosts from "./UserPosts/UserPosts";
 
 const Profile = () => {
   const { user } = useSelector((state) => state.auth);
-  // console.log("usuario", user.user);
-  // console.log("usuarios que sigo", user.user.following);
+  const { userData } = useSelector((state) => state.auth);
+  const { isLoading } = useSelector((state) => state.auth);
   const dispatch = useDispatch()
   
-  const getAllUserInfo = async () => {
+  const getAllUserInfoAndReset = async () => {
     await dispatch(getUserInfo()); 
+    dispatch(reset());
    };
 
   useEffect(() => {
-    getAllUserInfo()   
+    getAllUserInfoAndReset()
+
   }, [])
   
-
+  if (isLoading) {
+    return <h1>Loading User Details...</h1>;
+  }
   const createdTimeAgo = moment(user.user.createdAt).fromNow();
   return (
     <div>
@@ -29,9 +33,9 @@ const Profile = () => {
       <img src={user.user.avatar} />
       <p> Member since: {createdTimeAgo} </p>
       <p> Following: ({user.user.following.length})</p>
-      <Following />
+      <Following userData={userData}/>
       <div>
-        <UserPosts />
+        <UserPosts userData={userData} />
       </div>
     </div>
   );

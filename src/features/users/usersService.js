@@ -8,9 +8,9 @@ const getAllUsers = async () => {
   return res.data;
 };
 
-const getPostById = async (id) => {
+const getUserById = async (id) => {
   const user = JSON.parse(localStorage.getItem("user"));
-    const res = await axios.get(API_URL + "/posts/id/" + id,{
+    const res = await axios.get(API_URL + "/users/id/" + id,{
       headers: {
         authorization: user?.token,
       }});
@@ -27,7 +27,7 @@ const getPostByName = async (postTitle) => {
 
 const postsService = {
   getAllUsers,
-  getPostById,
+  getUserById,
   getPostByName
 };
 
