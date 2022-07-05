@@ -6,7 +6,6 @@ const Post = () => {
   const { posts } = useSelector((state) => state.posts);
   const post = posts.map((post) => {
     const dateTimeAgo = moment(post.createdAt).fromNow();
-     console.log(post)
 
     return (
       <div className="post" key={post._id}>
@@ -23,7 +22,7 @@ const Post = () => {
         </Link>
       </div>
     );
-  });
+  }).reverse();
 
   return <div className="home__posts__all">{post}</div>;
 };

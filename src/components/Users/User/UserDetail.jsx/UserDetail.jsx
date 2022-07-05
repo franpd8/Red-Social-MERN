@@ -24,10 +24,8 @@ const UserDetail = () => {
       <p>Name: {userDetails.name}</p>
       <p>Email: {userDetails.email}</p>
       <img src={userDetails.avatar} />
-      {/* React crashes over here  */}
-     {isLoading? console.log("esta cargando") : (  console.log("ya ha cargado"), <UserPosts userData={userDetails}/>)} 
-
-
+      <Following userData={userDetails}/>
+      <UserPosts userData={userDetails}/>
     </div>
   );
 };

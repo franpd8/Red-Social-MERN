@@ -24,11 +24,21 @@ const getPostByName = async (postTitle) => {
     return res.data;
   };
   
+  const createPost = async (postBody) => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const res = await axios.post(API_URL + "/posts/add",postBody,{headers: {
+      authorization: user?.token,
+    }});
+    console.log("respuesta",res.data.message)
+    return res.data.message;
+  };
+  
 
 const postsService = {
   getAllPosts,
   getPostById,
-  getPostByName
+  getPostByName,
+  createPost
 };
 
 export default postsService;

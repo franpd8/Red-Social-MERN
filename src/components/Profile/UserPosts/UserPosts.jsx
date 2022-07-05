@@ -3,7 +3,9 @@ import moment from "moment";
 import { Link } from "react-router-dom";
 function UserPosts ({userData}) {
   // const { userData } = useSelector((state) => state.auth);
-  // console.log("userData",userData)
+  console.log("userData",userData)
+
+  console.log("hola")
   const posts = userData.postIds?.map((post) => {
     const dateTimeAgo = moment(post.createdAt).fromNow();
     return (

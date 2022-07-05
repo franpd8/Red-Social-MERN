@@ -9,13 +9,6 @@ const Register = () => {
   const dispatch = useDispatch();
   const { isSuccess, isError, message } = useSelector((state) => state.auth);
 
-      const [formData, setFormData] = useState({
-      name: "",
-      email: "",
-      password: "",
-      password2: "",
-    });
-    const { name, email, password, password2 } = formData;
   useEffect(() => {
     if (isSuccess) {
       notification.success({
