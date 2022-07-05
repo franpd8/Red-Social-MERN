@@ -6,9 +6,8 @@ import Following from "./Following/Following";
 import UserPosts from "./UserPosts/UserPosts";
 
 const Profile = () => {
-  const { user } = useSelector((state) => state.auth);
-  const { userData } = useSelector((state) => state.auth);
-  const { isLoading } = useSelector((state) => state.auth);
+  const { user,userData,isLoading } = useSelector((state) => state.auth);
+ 
   const dispatch = useDispatch()
   
   const getAllUserInfoAndReset = async () => {
@@ -24,15 +23,15 @@ const Profile = () => {
   if (isLoading) {
     return <h1>Loading User Details...</h1>;
   }
-  const createdTimeAgo = moment(user.user.createdAt).fromNow();
+  const createdTimeAgo = moment(userData.createdAt).fromNow();
   return (
     <div>
       <h1>Profile</h1>
-      <p>Name: {user.user.name}</p>
-      <p>Email: {user.user.email}</p>
-      <img src={user.user.avatar} />
+      <p>Name: {userData.name}</p>
+      <p>Email: {userData.email}</p>
+      <img src={userData.avatar} />
       <p> Member since: {createdTimeAgo} </p>
-      <p> Following: ({user.user.following.length})</p>
+      {/* <p> Following: ({userData.following.length})</p> */}
       <Following userData={userData}/>
       <div>
         <UserPosts userData={userData} />

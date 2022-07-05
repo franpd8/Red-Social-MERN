@@ -26,17 +26,17 @@ export const getUserById = createAsyncThunk("posts/getUserById", async (id) => {
       console.error(error);
     }
   });
- //  *** Get Post by Name ****
-export const getPostByName = createAsyncThunk("posts/getPostByName", async (postName) => {
-    try {
+//  //  *** Get Post by Name ****
+// export const getPostByName = createAsyncThunk("posts/getPostByName", async (postName) => {
+//     try {
      
 
-      return await usersService.getPostByName(postName);
+//       return await usersService.getPostByName(postName);
 
-    } catch (error) {
-      console.error(error);
-    }
-  });
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   });
   
   
 
