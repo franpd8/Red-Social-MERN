@@ -29,7 +29,6 @@ const getPostByName = async (postTitle) => {
     const res = await axios.post(API_URL + "/posts/add",postBody,{headers: {
       authorization: user?.token,
     }});
-    console.log("respuesta",res.data.message)
     return res.data.message;
   };
   

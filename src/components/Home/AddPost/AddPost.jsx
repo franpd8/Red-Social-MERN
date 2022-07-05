@@ -2,26 +2,28 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createPost, reset } from "../../../features/posts/postsSlice";
 import { Link, useNavigate } from "react-router-dom";
-import { Form, Input, Button, Modal, DatePicker, notification } from "antd";
+import { Form, Input, Button, Modal, notification, Upload } from "antd";
+import { InboxOutlined, UploadOutlined } from "@ant-design/icons";
 const { TextArea } = Input;
 
 const AddPost = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isError, isSuccess, message } = useSelector((state) => state.posts);
-  
+  const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const [visible, setVisible] = useState(false);
   const showModal = () => {
     setVisible(true);
   };
-  const createPostAndReset = async (postData) => {
-    await dispatch(createPost(postData));
-    dispatch(reset());
-  };
-
   const handleCancel = () => {
     setVisible(false);
+  };
+  const createPostAndReset =  (postData) => {
+    dispatch(createPost(postData));
+    console.log("quesi")
+    dispatch(reset());
+    console.log("queno")
   };
   const openNotification = (type, messageTitle, placement) => {
     notification[type]({
@@ -39,29 +41,32 @@ const AddPost = () => {
       openNotification("success", "Éxito :)", "top");
     }
     dispatch(reset());
-  }, [message,isError,isSuccess]);
-  const [form] = Form.useForm();
+  }, [isError, isSuccess]);
 
-  const onFinish = (values) => {
-    // setLoading(true);
-    dispatch(createPostAndReset(values)); 
-   
-   setTimeout(() => {
-    setLoading(false);
-    setVisible(false);
-    form.resetFields();
-    // navigate("/");
-    
-  }, 3000);
- 
+  const onFinish = async (values) => {
+    if (values != null) {
+      console.log("Habia una vez")
+      setLoading(true);
+      console.log("un circo ")
+      dispatch(createPostAndReset(values));
+      setTimeout(() => {
+        console.log("que alegraba siempre ");
+        setLoading(false);
+        setVisible(false);
+        form.resetFields();
+        navigate("/");
+      }, 3000);
+    }
+    await dispatch(createPostAndReset(values));
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+
   return (
     <>
       <Button type="primary" onClick={showModal}>
-        Open Modal clicking here
+        Open Modal
       </Button>
 
       <Modal
@@ -70,7 +75,8 @@ const AddPost = () => {
         onCancel={handleCancel}
         footer={null}
       >
-        <Form  form={form}
+        <Form
+          form={form}
           name="form for creating a post "
           labelCol={{
             span: 24,

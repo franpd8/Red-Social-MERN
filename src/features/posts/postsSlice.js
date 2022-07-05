@@ -41,8 +41,6 @@ export const getPostByName = createAsyncThunk("posts/getPostByName", async (post
    //  *** Create a New Post ****
 export const createPost = createAsyncThunk("posts/createPost", async (postData,thunkAPI) => {
   try {
-
-    console.log("soy el postdata",postData)
     return await postsService.createPost(postData);
   } catch (error) {
     console.error(error);
@@ -61,7 +59,9 @@ export const postsSlice = createSlice({
   reducers: {
     reset: (state) => {
       state.isLoading = false;
-      state.isSuccessAddPost = false;
+      state.isSuccess = false;
+      state.message = ""
+
     },
   },
   extraReducers: (builder) => {
