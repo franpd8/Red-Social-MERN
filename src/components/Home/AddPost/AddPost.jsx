@@ -19,12 +19,7 @@ const AddPost = () => {
   const handleCancel = () => {
     setVisible(false);
   };
-  const createPostAndReset =  (postData) => {
-    dispatch(createPost(postData));
   
-    dispatch(reset());
-  
-  };
   const openNotification = (type, messageTitle, placement) => {
     notification[type]({
       className: "notification-class",
@@ -33,6 +28,9 @@ const AddPost = () => {
       placement,
     });
   };
+
+  
+
   useEffect(() => {
     if (isError) {
       openNotification("error", "Error :(", "top");
@@ -44,20 +42,14 @@ const AddPost = () => {
   }, [isError, isSuccess]);
 
   const onFinish = async (values) => {
-    if (values != null) {
-      // setVisible(false);
-      // form.resetFields();
-      // setLoading(true);
-      // setLoading(false);
-      dispatch(createPostAndReset(values));
-      setTimeout(() => {
-        setLoading(false);
-        setVisible(false);
-        form.resetFields();
-        // navigate("/");
-      }, 3000);
-    }
-    await dispatch(createPostAndReset(values));
+    setLoading(true);
+    setTimeout(() => {
+      form.resetFields();
+      setVisible(false);
+      setLoading(false);
+    }, 2000);
+   await dispatch(createPost(values));
+    dispatch(reset());   
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
@@ -138,6 +130,7 @@ const AddPost = () => {
           </Form.Item>
         </Form>
       </Modal>
+      
     </>
   );
 };

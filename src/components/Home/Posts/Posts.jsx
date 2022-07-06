@@ -8,7 +8,8 @@ import SearchPost from "./SearchPost/SearchPost";
 const { Search } = Input;
 
 const Posts = () => {
-  const { isLoading } = useSelector((state) => state.posts);
+  const { isLoading,posts } = useSelector((state) => state.posts);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -19,7 +20,8 @@ const Posts = () => {
 
   useEffect(() => {
     getPostsAndReset();
-  }, []);
+  }, [posts]);
+
   const onSearch = (value) => {
     navigate("/search/" + value);
   };

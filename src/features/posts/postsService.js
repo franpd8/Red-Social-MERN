@@ -26,9 +26,11 @@ const getPostByName = async (postTitle) => {
   
   const createPost = async (postBody) => {
     const user = JSON.parse(localStorage.getItem("user"));
-    const res = await axios.post(API_URL + "/posts/add",postBody,{headers: {
+    const res = await axios.post(API_URL + "/posts/add", postBody, 
+    {headers: {
       authorization: user?.token,
     }});
+    console.log(res.data)
     return res.data;
   };
   
