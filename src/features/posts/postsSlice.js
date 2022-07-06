@@ -7,7 +7,8 @@ const initialState = {
   isLoading: false,
   isSuccess: false,
   isError: false,
-  
+  isLiked:false,
+  isDisliked:false
 };
 
 // *** Functions *** 
@@ -77,7 +78,9 @@ export const postsSlice = createSlice({
     reset: (state) => {
       state.isLoading = false;
       state.isSuccess = false;
-      state.message = ""
+      state.message = "";
+      state.isLiked=false;
+      state.isDisliked = false;
 
     },
   },
@@ -116,12 +119,12 @@ export const postsSlice = createSlice({
       const posts = state.posts.map((post) => {
         if (post._id === action.payload.post._id) {
           post = action.payload.post;
-          console.log("post es esto:",post)
         }
         return post
     })
     state.message = action.payload.message;
     state.posts= posts;
+    state.isLiked= true
   
   })
 
@@ -129,13 +132,15 @@ export const postsSlice = createSlice({
     const posts = state.posts.map((post) => {
       if (post._id === action.payload.post._id) {
         post = action.payload.post;
-        console.log("post es esto:",post)
+
       }
       return post
   })
-  console.log("payload",action.payload)
+
   state.message = action.payload.message;
   state.posts= posts;
+  state.isDisliked= true
+  
 
 });
     },

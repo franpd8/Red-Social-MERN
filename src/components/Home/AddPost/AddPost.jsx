@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createPost, getAllPosts, reset } from "../../../features/posts/postsSlice";
+import { createPost, reset } from "../../../features/posts/postsSlice";
 import { useNavigate } from "react-router-dom";
-import { Form, Input, Button, Modal, notification, Upload } from "antd";
-import { InboxOutlined, UploadOutlined } from "@ant-design/icons";
+import { Form, Input, Button, Modal, notification} from "antd";
+
 const { TextArea } = Input;
 
 const AddPost = () => {
@@ -47,7 +47,7 @@ const AddPost = () => {
       form.resetFields();
       setVisible(false);
       setLoading(false);
-    }, 2000);
+    }, 1000);
    await dispatch(createPost(values));
   //  await dispatch(getAllPosts())
     dispatch(reset());   

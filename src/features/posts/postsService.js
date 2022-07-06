@@ -46,7 +46,7 @@ const like = async (_id) => {
       },
     }
   );
-  console.log("resdata", res.data);
+
   return res.data;
 };
 
@@ -61,7 +61,7 @@ const dislike = async (_id) => {
       },
     }
   );
-  console.log("resdata", res.data);
+
   return res.data;
 };
 
