@@ -20,14 +20,14 @@ const Posts = () => {
 
   useEffect(() => {
     getPostsAndReset();
-  }, [posts]);
+  }, []);
 
   const onSearch = (value) => {
     navigate("/search/" + value);
   };
 
   if (isLoading) {
-    return <h1>Cargando post...</h1>;
+    return <div className="home__posts"><h1>Cargando post...</h1>;</div>
   }
   return (
     <div className="home__posts">
@@ -40,7 +40,7 @@ const Posts = () => {
         onSearch={onSearch}
         enterButton
       /> */}
-      <SearchPost/>
+    
       <Post />
     </div>
   );

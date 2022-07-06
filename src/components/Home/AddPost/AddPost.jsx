@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createPost, reset } from "../../../features/posts/postsSlice";
+import { createPost, getAllPosts, reset } from "../../../features/posts/postsSlice";
 import { useNavigate } from "react-router-dom";
 import { Form, Input, Button, Modal, notification, Upload } from "antd";
 import { InboxOutlined, UploadOutlined } from "@ant-design/icons";
@@ -49,6 +49,7 @@ const AddPost = () => {
       setLoading(false);
     }, 2000);
    await dispatch(createPost(values));
+   await dispatch(getAllPosts())
     dispatch(reset());   
   };
   const onFinishFailed = (errorInfo) => {

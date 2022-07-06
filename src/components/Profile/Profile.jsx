@@ -22,7 +22,7 @@ const Profile = () => {
   }, [])
   
   if (isLoading) {
-    return <h1>Loading User Details...</h1>;
+    return <div className="profile"><h1>Loading User Details...</h1></div>;
   }
   const createdTimeAgo = moment(userData.createdAt).fromNow();
   return (

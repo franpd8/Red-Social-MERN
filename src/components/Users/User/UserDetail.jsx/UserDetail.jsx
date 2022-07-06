@@ -20,7 +20,7 @@ const UserDetail = () => {
     return <h1>Loading user...</h1>;
   }
   return (
-    <div>
+    <div className="userDetail">
     <h1>Profile</h1>
       <p>Name: {userDetails.name}</p>
       <p>Email: {userDetails.email}</p>

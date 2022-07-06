@@ -18,25 +18,22 @@ export const getAllUsers = createAsyncThunk("users/getAllUsers", async () => {
   }
 });
 
-   //   **** Get Post by ID **** 
-export const getUserById = createAsyncThunk("posts/getUserById", async (id) => {
+   //   **** Get User by ID **** 
+export const getUserById = createAsyncThunk("users/getUserById", async (id) => {
     try {
       return await usersService.getUserById(id);
     } catch (error) {
       console.error(error);
     }
   });
-//  //  *** Get Post by Name ****
-// export const getPostByName = createAsyncThunk("posts/getPostByName", async (postName) => {
-//     try {
-     
-
-//       return await usersService.getPostByName(postName);
-
-//     } catch (error) {
-//       console.error(error);
-//     }
-//   });
+//  //  *** Get User by Name ****
+export const getUserByName = createAsyncThunk("users/getUserByName", async (userName) => {
+    try {
+      return await usersService.getUserByName(userName);
+    } catch (error) {
+      console.error(error);
+    }
+  });
   
   
 
@@ -64,9 +61,9 @@ export const usersSlice = createSlice({
         state.userDetails = action.payload;
       })
     //  *** Get Post by Name ****
-    // .addCase(getPostByName.fulfilled, (state, action) => {
-    //   state.posts = action.payload;
-    // });
+    .addCase(getUserByName.fulfilled, (state, action) => {
+      state.users = action.payload;
+    });
    },
   })
   

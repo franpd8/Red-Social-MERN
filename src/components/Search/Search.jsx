@@ -13,7 +13,7 @@ const Search = () => {
       }, [title]);
     
     return (
-      <div>
+      <div className="Search__all">
           Search Results
           <Post/>
           </div>

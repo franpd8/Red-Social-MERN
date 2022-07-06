@@ -19,7 +19,7 @@ const PostDetail = () => {
     return <h1>Cargando post...</h1>;
   }
   return (
-    <div>
+    <div className="postDetail">
       Post Detail
       <h3>Titulo: {post.title}</h3>
       <p> Descripcion: {post.body}</p>

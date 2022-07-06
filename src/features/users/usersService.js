@@ -18,8 +18,8 @@ const getUserById = async (id) => {
     return res.data;
   };
   
-const getPostByName = async (postTitle) => {
-    const res = await axios.get(API_URL + "/posts/search/" + postTitle);
+const getUserByName = async (userName) => {
+    const res = await axios.get(API_URL + "/posts/search/" + userName);
     console.log("respuesta",res.data)
     return res.data;
   };
@@ -28,7 +28,7 @@ const getPostByName = async (postTitle) => {
 const postsService = {
   getAllUsers,
   getUserById,
-  getPostByName
+  getUserByName
 };
 
 export default postsService;
