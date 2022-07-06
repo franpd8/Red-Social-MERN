@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createPost, reset } from "../../../features/posts/postsSlice";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Form, Input, Button, Modal, notification, Upload } from "antd";
 import { InboxOutlined, UploadOutlined } from "@ant-design/icons";
 const { TextArea } = Input;
@@ -21,9 +21,9 @@ const AddPost = () => {
   };
   const createPostAndReset =  (postData) => {
     dispatch(createPost(postData));
-    console.log("quesi")
+  
     dispatch(reset());
-    console.log("queno")
+  
   };
   const openNotification = (type, messageTitle, placement) => {
     notification[type]({
@@ -45,16 +45,16 @@ const AddPost = () => {
 
   const onFinish = async (values) => {
     if (values != null) {
-      console.log("Habia una vez")
-      setLoading(true);
-      console.log("un circo ")
+      // setVisible(false);
+      // form.resetFields();
+      // setLoading(true);
+      // setLoading(false);
       dispatch(createPostAndReset(values));
       setTimeout(() => {
-        console.log("que alegraba siempre ");
         setLoading(false);
         setVisible(false);
         form.resetFields();
-        navigate("/");
+        // navigate("/");
       }, 3000);
     }
     await dispatch(createPostAndReset(values));
@@ -112,16 +112,29 @@ const AddPost = () => {
           >
             <TextArea rows={6} />
           </Form.Item>
-          <Form.Item>
+          <Form.Item
+            label="Picture of your post"
+            name="img"
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item shouldUpdate className="submit">
+          {() => (
             <Button
               style={{ width: "100%" }}
               htmlType="submit"
               className="login-form-button"
               type="primary"
               loading={loading}
+              disabled={
+                !form.isFieldsTouched(true) ||
+                form.getFieldsError().filter(({ errors }) => errors.length)
+                  .length > 0
+              }
             >
               Create Post
             </Button>
+            )}
           </Form.Item>
         </Form>
       </Modal>

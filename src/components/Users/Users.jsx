@@ -21,7 +21,10 @@ const { isLoading } = useSelector((state) => state.users);
   }
 
   return (
-    <div >
+    <div className="users">
+        <h2> Here will display all  Users </h2>
+        <div><h2>user Search</h2></div>
+    
        <User/>
         </div>
   )

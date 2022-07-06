@@ -5,7 +5,6 @@ import { logout, reset } from "../../features/auth/authSlice";
 import { notification, Input } from "antd";
 import Home from "../Home/Home";
 
-const { Search } = Input;
 
 const Header = () => {
   const { user, message, isSuccessLogOut } = useSelector((state) => state.auth);
@@ -19,9 +18,7 @@ const Header = () => {
       placement,
     });
   };
-  const onSearch = (value) => {
-    navigate("/search/" + value);
-  };
+  
   useEffect(() => {
     if (isSuccessLogOut) {
       openNotification("success","Log out Succesfully :)","top")
@@ -35,31 +32,24 @@ const Header = () => {
   };
 
   return (
-    <nav>
-      <p>
-        <Link to="/">home</Link>
-      </p>
-      <p>
-        <Link to="/users">userlist</Link>
-      </p>
-
-      <Search
-        placeholder="Search for a post"
-        className="searchBar"
-        allowClear
-        onSearch={onSearch}
-        enterButton
-      />
-
+    <div className="header">
+    <nav className="header-box">
       <div>
         {user ? (
           <>
-            <div>
+          <div className="header-link" >
+        <Link   to="/">home</Link>
+      </div>
+      <div className="header-link" >
+        <Link  to="/users">userlist</Link>
+      </div>
+
+            <div className="header-link" >
               <Link to="/" onClick={onLogout}>
                 Logout
               </Link>
             </div>
-            <div>
+            <div className="header-link" >
               <Link to="/profile">{user.user.name}'s Profile </Link>{" "}
             </div>
           </>
@@ -75,6 +65,7 @@ const Header = () => {
         )}
       </div>
     </nav>
+    </div>
   );
 };
 

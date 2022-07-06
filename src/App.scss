@@ -4,6 +4,7 @@
 .home{
   border:2px solid black;
   background-color: beige;
+  padding-left:25vw;
 }
 .home__posts{
   border:2px solid red;
@@ -16,15 +17,102 @@
   padding: 1em;
   display:flex;
   flex-wrap:wrap;
+  .post{
+    border: 2px dotted white;
+    background-color: burlywood;
+    margin: 1em 0 ;
+    width: 50%;
+    
+  }
 }
 
-.post{
-  border: 2px dotted white;
-  background-color: burlywood;
-  margin: 1em 0 ;
-  width: 50%;
+.users{
+  margin-left:25vw;
+  display:flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  border:solid 8px rgb(65, 172, 35);
+  background-color: aquamarine;
+  .users__all{
+  
+    display:flex;
+    flex-wrap: wrap;
+    border:solid 8px rgb(65, 172, 35);
+    background-color: rgb(173, 180, 37);
+    .user{
+      border:6px solid purple;
+      background-color: bisque;
+      width: 33.3%;
+      padding:1em;
+  
+    }}
+
+
+}
+
+.profile{
+  border:20px solid pink;
+  margin-left:25vw;
+  .userProfile{
+    border: 10px solid red;
+  }
+  .following{
+    background-color: antiquewhite;
+  }
+ 
+}
+// SINGLE COMPONENTS
+.following{
+  border:10px solid green;
+  display:flex;
+}
+.following__user{
+  border:2px solid blue;
+  width:30%;
+}
+
+// ----- Users Posts ---- 
+.userPosts{
+  border:10px solid red;
+}
+.userPosts__post{
+  border:10px solid orange;
+  width:600px;
+}
+
+
+.header{
+  border:2px solid red;
+  width:25vw;
+  position:fixed;
+  padding-left:1em;
+  display:flex;
+
+  justify-content: flex-end;
+  .header-box{
+    border:2px solid blue;
+    width:18vw;
+   
+
+    height: 80vh;
+    div.header-link {
+      margin: 2em 0 ;
+      border:2px solid green;
+      background-color: aquamarine;
+      
+      a {
+        margin: 2em;
+        border:2px solid purple;
+         }
+    }
+   
+  }
   
 }
+
+
+
+
 .notification-class{
   width:600px;
   background-color: aqua;
@@ -47,20 +135,3 @@
   height:auto;
 }
 
-.users__all{
-  border:solid 2px red;
-  background-color: aquamarine;
-}
-.user{
-  border:2px solid purple;
-  background-color: bisque;
-  width: 50%;
-
-}
-.userPosts{
-  border:2px solid red;
-}
-.userPosts__post{
-  border:2px solid orange;
-  width:600px;
-}

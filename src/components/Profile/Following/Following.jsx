@@ -4,7 +4,7 @@ function Following ({userData}) {
    
   const following = userData.following?.map((user) => {
     return (
-      <div key={user._id}>
+      <div className="following__user" key={user._id}>
      <Link to={"/user/" + user._id}>
         <p> {user.name}</p>
         <p>
@@ -14,7 +14,7 @@ function Following ({userData}) {
       </div>
     );
   });
-  return <div>{
+  return <div className="following">{
     following
     }</div>;
 };

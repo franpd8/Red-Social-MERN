@@ -16,6 +16,7 @@ const Profile = () => {
    };
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     getAllUserInfoAndReset()
 
   }, [])
@@ -25,17 +26,20 @@ const Profile = () => {
   }
   const createdTimeAgo = moment(userData.createdAt).fromNow();
   return (
-    <div>
+    <div className="profile">
+      <div className="userProfile">
       <h1>Profile</h1>
       <p>Name: {userData.name}</p>
       <p>Email: {userData.email}</p>
       <img src={userData.avatar} />
       <p> Member since: {createdTimeAgo} </p>
+      </div>
       {/* <p> Following: ({userData.following.length})</p> */}
       <Following userData={userData}/>
       <div>
         <UserPosts userData={userData} />
       </div>
+      
     </div>
   );
 };

@@ -12,6 +12,7 @@ const UserDetail = () => {
   const dispatch = useDispatch();
   const { userDetails } = useSelector((state) => state.users);
   useEffect(() => {
+    window.scrollTo(0, 0)
     dispatch(getUserById(id));
     dispatch(reset());
   }, []);

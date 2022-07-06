@@ -20,9 +20,9 @@ const User = () => {
           </div>
         );
       });
-
   return (
-    <div className="users__all">{user}</div>
+    <div className="users__all">
+    {user}</div>
   )
 }
 
