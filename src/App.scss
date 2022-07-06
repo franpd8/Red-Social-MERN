@@ -151,3 +151,14 @@
   height:auto;
 }
 
+// override ant-d styles
+
+// ** TAB COLOR
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn{
+  color:red;
+}
+// ** TAB BORDER-BOTTOM
+.ant-tabs-ink-bar {
+  height: 5px;
+  background: green ;
+}
