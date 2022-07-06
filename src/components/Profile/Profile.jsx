@@ -4,6 +4,7 @@ import moment from "moment";
 import { getUserInfo, reset} from "../../features/auth/authSlice";
 import Following from "./Following/Following";
 import UserPosts from "./UserPosts/UserPosts";
+import Follower from "./Follower/Follower";
 
 const Profile = () => {
   const { user,userData,isLoading } = useSelector((state) => state.auth);
@@ -36,6 +37,7 @@ const Profile = () => {
       </div>
       {/* <p> Following: ({userData.following.length})</p> */}
       <Following userData={userData}/>
+      <Follower userData={userData}/>
       <div>
         <UserPosts userData={userData} />
       </div>

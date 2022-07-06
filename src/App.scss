@@ -72,11 +72,14 @@
   margin-left:25vw;
 }
 // SINGLE COMPONENTS
-.following{
+.following,.follower{
   border:10px solid green;
-  display:flex;
+
+  .following__box,.follower__box{
+    display:flex;
+  }
 }
-.following__user{
+.following__user,.follower__user{
   border:2px solid blue;
   width:30%;
 }

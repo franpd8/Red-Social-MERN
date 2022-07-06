@@ -15,9 +15,9 @@ const UserDetail = () => {
     window.scrollTo(0, 0)
     dispatch(getUserById(id));
     dispatch(reset());
-  }, []);
+  }, [id]);
   if (isLoading) {
-    return <h1>Loading user...</h1>;
+    return  <div className="userDetail"><h1>Loading user...</h1></div>;
   }
   return (
     <div className="userDetail">
