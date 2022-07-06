@@ -22,9 +22,7 @@ const Posts = () => {
     getPostsAndReset();
   }, []);
 
-  const onSearch = (value) => {
-    navigate("/search/" + value);
-  };
+ 
 
   if (isLoading) {
     return <div className="home__posts"><h1>Cargando post...</h1>;</div>

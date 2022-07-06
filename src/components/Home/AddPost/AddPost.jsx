@@ -49,7 +49,7 @@ const AddPost = () => {
       setLoading(false);
     }, 2000);
    await dispatch(createPost(values));
-   await dispatch(getAllPosts())
+  //  await dispatch(getAllPosts())
     dispatch(reset());   
   };
   const onFinishFailed = (errorInfo) => {

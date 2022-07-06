@@ -50,6 +50,15 @@ export const createPost = createAsyncThunk("posts/createPost", async (postData,t
   }
 });
   
+// *** Like a Post **** 
+export const like = createAsyncThunk("posts/like", async (_id) => {
+  try {
+    return await postsService.like(_id);
+  } catch (error) {
+    console.error(error);
+  }
+});
+
   
 
   
@@ -95,6 +104,19 @@ export const postsSlice = createSlice({
       state.message = action.payload.message;
       state.posts = [ ...state.posts,action.payload.post]
     })
+    .addCase(like.fulfilled, (state, action) => {
+      const posts = state.posts.map((post) => {
+        if (post._id === action.payload.post._id) {
+          post = action.payload.post;
+          console.log("post es esto:",post)
+        }
+        return post
+    })
+    console.log("payload",action.payload)
+    state.message = action.payload.message;
+    state.posts= posts;
+  
+  });
     },
   })
   
