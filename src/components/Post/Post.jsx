@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import { HeartOutlined, HeartFilled } from "@ant-design/icons";
-import { like } from "../../features/posts/postsSlice";
+import { dislike, like } from "../../features/posts/postsSlice";
 
 const Post = () => {
   const { posts } = useSelector((state) => state.posts);
@@ -21,7 +21,7 @@ const Post = () => {
           <p>Title: {post.title}</p>
           <img className="post__img" src={post.img} /></Link>
           {isAlreadyLiked ? (
-          <HeartFilled  style={{fontSize: 40+"px"}} onClick={()=>  console.log("dislike")  } />
+          <HeartFilled  style={{fontSize: 40+"px"}} onClick={()=> dispatch(dislike(post._id))  } />
         ) : (
           <HeartOutlined style={{fontSize: 40+"px"}} onClick={()=> dispatch(like(post._id))  } />
         )}
