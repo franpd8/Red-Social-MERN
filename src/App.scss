@@ -1,10 +1,13 @@
 @import "antd/dist/antd.css";
 
-
+.margin{
+  margin-left:25vw
+  
+}
 .home{
   border:2px solid black;
   background-color: beige;
-  margin-left:25vw;
+  
 }
 .home__posts{
   border:2px solid red;
@@ -27,7 +30,7 @@
 }
 
 .users{
-  margin-left:25vw;
+
   display:flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -52,7 +55,7 @@
 
 .profile{
   border:20px solid pink;
-  margin-left:25vw;
+  
   .userProfile{
     border: 10px solid red;
   }
@@ -62,14 +65,14 @@
 }
 .userDetail{
   border:20px solid pink;
-  margin-left:25vw;
+  
 }
 .postDetail{
-  margin-left:25vw;
+  
   border:20px solid blue;
 }
 .Search__all{
-  margin-left:25vw;
+  
 }
 // SINGLE COMPONENTS
 .following,.follower{

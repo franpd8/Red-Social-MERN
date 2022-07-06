@@ -15,7 +15,9 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+
         <Header />
+<div className="margin">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -28,6 +30,7 @@ function App() {
           <Route path="/users" element={<Users />} />
 
         </Routes>
+        </div>
       </BrowserRouter>
     </div>
   );
