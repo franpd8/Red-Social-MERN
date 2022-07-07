@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllUsers, reset } from '../../features/users/usersSlice';
-import SearchPost from '../Home/Posts/SearchPost/SearchPost';
-import SearchUser from './User/SearchUser/SearchUser';
 import User from './User/User';
 
 const Users = () => {
@@ -25,11 +23,6 @@ const { isLoading } = useSelector((state) => state.users);
   return (
     <div className="users">
         <h2> Here will display all  Users </h2>
-        <div>
-            <SearchUser/>
-            <SearchPost/>
-            </div>
-    
        <User/>
         </div>
   )

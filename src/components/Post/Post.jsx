@@ -1,13 +1,24 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import moment from "moment";
-import { HeartOutlined, HeartFilled } from "@ant-design/icons";
-import { dislike, like, reset } from "../../features/posts/postsSlice";
-import { useEffect } from "react";
+import {
+  HeartOutlined,
+  HeartFilled,
+  DeleteOutlined,
+  EditOutlined,
+} from "@ant-design/icons";
+import {
+  deletePost,
+  dislike,
+  like,
+  reset,
+} from "../../features/posts/postsSlice";
+import { useEffect, useState } from "react";
 import { notification } from "antd";
+import EditPost from "./EditPost/EditPost";
 
 const Post = () => {
-  const { message, posts, isLiked, isDisliked } = useSelector(
+  const { message, posts, isLiked, isDisliked, isDeleted } = useSelector(
     (state) => state.posts
   );
   const { user } = useSelector((state) => state.auth);
@@ -20,13 +31,18 @@ const Post = () => {
       placement,
     });
   };
-
   useEffect(() => {
-    if (isLiked || isDisliked) {
+    if (isLiked || isDisliked || isDeleted) {
       openNotification("success", "holis", "top");
     }
     dispatch(reset());
-  }, [isLiked, isDisliked]);
+  }, [isLiked, isDisliked, isDeleted]);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const showModal = (id) => {
+    console.log(id)
+    setIsModalVisible(true);
+  };
 
   const post = posts
     .map((post) => {
@@ -59,7 +75,12 @@ const Post = () => {
               style={{ fontSize: 40 + "px" }}
               onClick={() => dispatch(likeAndReset(post._id))}
             />
-          )}
+          )}{" "}
+          <DeleteOutlined
+            style={{ fontSize: 40 + "px" }}
+            onClick={() => dispatch(deletePost(post._id))}
+          />
+          <EditOutlined onClick={() => showModal(post._id)} />
           <Link to={"/user/" + post.userId._id}>
             <div>
               {" "}
@@ -74,7 +95,11 @@ const Post = () => {
     })
     .reverse();
 
-  return <div className="home__posts__all">{post}</div>;
+  return <div className="home__posts__all">
+    {post}
+    <EditPost visible={isModalVisible} setVisible={setIsModalVisible} />
+
+  </div>;
 };
 
 export default Post;

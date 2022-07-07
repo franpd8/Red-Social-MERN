@@ -65,6 +65,15 @@ const dislike = async (_id) => {
   return res.data;
 };
 
+const deletePost = async (id) => {
+  const res = await axios.delete(API_URL + "/posts/delete/" + id);
+  console.log("resdata de deletePost",res.data)
+  console.log("buscando el post borrado",res.data.post)
+  console.log("buscando el id",res.data.post._id)
+  return res.data;
+};
+
+
 const postsService = {
   getAllPosts,
   getPostById,
@@ -72,6 +81,7 @@ const postsService = {
   createPost,
   like,
   dislike,
+  deletePost,
 };
 
 export default postsService;

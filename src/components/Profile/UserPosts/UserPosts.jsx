@@ -8,7 +8,7 @@ function UserPosts({ userData }) {
       <div className="userPosts__post" key={post._id}>
         <Link to={"/post/" + post._id}>
           <p>
-            <img className="smallIcon__img" src={post.img} />
+            <img style={{ width: 100 + "%" }} src={post.img} />
           </p>
           <p> Title: {post.title}</p>
           <p> Date: {dateTimeAgo}</p>

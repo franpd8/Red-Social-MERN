@@ -6,9 +6,9 @@ import React from "react";
 import { UpSquareFilled } from '@ant-design/icons';
 
 const style = {
-  height: 40,
-  width: 40,
-  lineHeight: "40px",
+  height: 60,
+  width: 60,
+  lineHeight: "72px",
   borderRadius: 4,
   backgroundColor: "#1088e9",
   color: "#fff",
@@ -20,7 +20,7 @@ const Home = () => {
   <div
     style={{
       height: "600vh",
-      padding: 8,
+      padding: 16,
     }}
   ></div>;
   return (
@@ -32,7 +32,7 @@ const Home = () => {
       <h2>Here will display all Posts</h2>
       <Posts />
       <BackTop>
-        <div style={style}><UpSquareFilled /></div>
+        <div style={style}><UpSquareFilled  style={{ fontSize: 32 + "px" }} /></div>
       </BackTop>
     </div>
   );

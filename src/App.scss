@@ -90,10 +90,13 @@
 // ----- Users Posts ---- 
 .userPosts{
   border:10px solid red;
+  display:flex;
+  flex-wrap:wrap;
 }
 .userPosts__post{
   border:10px solid orange;
-  width:600px;
+  width:25%;
+  aspect-ratio: 1 / 1;
 }
 
 

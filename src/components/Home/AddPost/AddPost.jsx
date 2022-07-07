@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createPost, reset } from "../../../features/posts/postsSlice";
 import { useNavigate } from "react-router-dom";
 import { Form, Input, Button, Modal, notification} from "antd";
+import EditPost from "../../Post/EditPost/EditPost";
 
 const { TextArea } = Input;
 
@@ -28,9 +29,6 @@ const AddPost = () => {
       placement,
     });
   };
-
-  
-
   useEffect(() => {
     if (isError) {
       openNotification("error", "Error :(", "top");
@@ -49,7 +47,6 @@ const AddPost = () => {
       setLoading(false);
     }, 1000);
    await dispatch(createPost(values));
-  //  await dispatch(getAllPosts())
     dispatch(reset());   
   };
   const onFinishFailed = (errorInfo) => {
@@ -61,7 +58,7 @@ const AddPost = () => {
       <Button type="primary" onClick={showModal}>
         Open Modal
       </Button>
-
+<EditPost/>
       <Modal
         visible={visible}
         title="Modal for adding post"
