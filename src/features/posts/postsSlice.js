@@ -10,6 +10,7 @@ const initialState = {
   isLiked: false,
   isDisliked: false,
   isDeleted:false,
+  isEdit:false,
 };
 
 // *** Functions ***
@@ -22,7 +23,6 @@ export const getAllPosts = createAsyncThunk("posts/getAllPosts", async () => {
     console.error(error);
   }
 });
-
 //   **** Get Post by ID ****
 export const getPostById = createAsyncThunk("posts/getPostById", async (id) => {
   try {
@@ -40,7 +40,6 @@ export const getPostByName = createAsyncThunk(  "posts/getPostByName",  async (p
     }
   }
 );
-
 //  *** Create a New Post ****
 export const createPost = createAsyncThunk(  "posts/createPost",  async (postData, thunkAPI) => {
     try {
@@ -52,19 +51,18 @@ export const createPost = createAsyncThunk(  "posts/createPost",  async (postDat
     }
   }
 );
-
 // *** Like a Post ****
-export const like = createAsyncThunk("posts/like", async (_id) => {
+export const likePost = createAsyncThunk("posts/likePost", async (_id) => {
   try {
-    return await postsService.like(_id);
+    return await postsService.likePost(_id);
   } catch (error) {
     console.error(error);
   }
 });
 // *** DisLike a Post ****
-export const dislike = createAsyncThunk("posts/dislike", async (_id) => {
+export const dislikePost = createAsyncThunk("posts/dislikePost", async (_id) => {
   try {
-    return await postsService.dislike(_id);
+    return await postsService.dislikePost(_id);
   } catch (error) {
     console.error(error);
   }
@@ -77,6 +75,18 @@ export const deletePost = createAsyncThunk("posts/deletePost", async (id) => {
     console.error(error);
   }
 });
+
+//  *** Edit a Post
+export const updatePost = createAsyncThunk("posts/update", async (post) => {
+  try {
+    return await postsService.updatePost(post);
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+
+
 
 export const postsSlice = createSlice({
   name: "posts",
@@ -122,7 +132,7 @@ export const postsSlice = createSlice({
         state.posts = [...state.posts, action.payload.post];
       })
       //  *** Liking a Post
-      .addCase(like.fulfilled, (state, action) => {
+      .addCase(likePost.fulfilled, (state, action) => {
         const posts = state.posts.map((post) => {
           if (post._id === action.payload.post._id) {
             post = action.payload.post;
@@ -134,7 +144,7 @@ export const postsSlice = createSlice({
         state.isLiked = true;
       })
       // *** Disliking a Post
-      .addCase(dislike.fulfilled, (state, action) => {
+      .addCase(dislikePost.fulfilled, (state, action) => {
         const posts = state.posts.map((post) => {
           if (post._id === action.payload.post._id) {
             post = action.payload.post;
@@ -150,11 +160,24 @@ export const postsSlice = createSlice({
       .addCase(deletePost.fulfilled, (state, action) => {
         state.message = action.payload.message
         state.isDeleted = true
-         // revisar aqui 
          state.posts = state.posts.filter(
           (post) => post._id !== action.payload.post._id
         );
       })
+      .addCase(updatePost.fulfilled, (state, action) => {
+        console.log("payload",action.payload)
+        const posts = state.posts.map((post) => {
+  
+          if (post._id === action.payload.post._id) {
+            post = action.payload.post;
+          }
+          return post;
+        });
+        state.message = action.payload.message;
+        state.posts = posts;
+        state.isEdit = true;
+      });
+
 
   },
 });

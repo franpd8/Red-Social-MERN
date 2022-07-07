@@ -1,36 +1,43 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Button, Modal, Form, InputNumber, Input } from "antd";
+import { updatePost } from "../../../features/posts/postsSlice";
 const { TextArea } = Input;
 
 const EditPost = ({ visible, setVisible }) => {
   const [form] = Form.useForm();
-  const handleCancel = () => {
-    setVisible(false);
-  };
   const [loading, setLoading] = useState(false);
+  const { post } = useSelector((state)=> state.posts)
+  const handleCancel = () => {setVisible(false);};
+  const dispatch = useDispatch();
   const onFinish = (values) => {
     console.log(values);
+    const postWithId = { ...values, id: post._id };
+    console.log(postWithId)
+    dispatch(updatePost(postWithId));
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
       setVisible(false);
     }, 2000);
   };
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
+  const onFinishFailed = (errorInfo) => {console.log("Failed:", errorInfo);  };
+
+  useEffect(() => {
+    const postToEdit = {...post};
+    form.setFieldsValue(postToEdit);
+  }, [post]);
 
   return (
     <Modal
-      title="Edit Book"
+      title="Edit Post Modal"
       visible={visible}
       onCancel={handleCancel}
       footer={[]}
     >
       <Form
         form={form}
-        name="form for creating a post "
+        name="form for updating a post "
         labelCol={{
           span: 24,
         }}
@@ -41,14 +48,8 @@ const EditPost = ({ visible, setVisible }) => {
         onFinishFailed={onFinishFailed}
       >
         <Form.Item
-          label="Title of your new post"
+          label="Update your post's title"
           name="title"
-          rules={[
-            {
-              required: true,
-              message: "Your post must have a title",
-            },
-          ]}
         >
           <Input />
         </Form.Item>
@@ -56,12 +57,6 @@ const EditPost = ({ visible, setVisible }) => {
         <Form.Item
           label="Post description "
           name="body"
-          rules={[
-            {
-              required: true,
-              message: "Your post can't be empty",
-            },
-          ]}
         >
           <TextArea rows={6} />
         </Form.Item>
@@ -76,13 +71,8 @@ const EditPost = ({ visible, setVisible }) => {
               className="login-form-button"
               type="primary"
               loading={loading}
-              disabled={
-                !form.isFieldsTouched(true) ||
-                form.getFieldsError().filter(({ errors }) => errors.length)
-                  .length > 0
-              }
             >
-              Create Post
+              Edit Post
             </Button>
           )}
         </Form.Item>

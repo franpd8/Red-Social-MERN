@@ -9,13 +9,15 @@ import {
 } from "@ant-design/icons";
 import {
   deletePost,
-  dislike,
-  like,
+  dislikePost,
+  likePost,
   reset,
+  getPostById,
 } from "../../features/posts/postsSlice";
 import { useEffect, useState } from "react";
 import { notification } from "antd";
 import EditPost from "./EditPost/EditPost";
+
 
 const Post = () => {
   const { message, posts, isLiked, isDisliked, isDeleted } = useSelector(
@@ -40,7 +42,7 @@ const Post = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const showModal = (id) => {
-    console.log(id)
+    dispatch(getPostById(id))
     setIsModalVisible(true);
   };
 
@@ -48,11 +50,11 @@ const Post = () => {
     .map((post) => {
       const isAlreadyLiked = post.likes?.includes(user?.user._id);
       const dislikeAndReset = (postid) => {
-        dispatch(dislike(postid));
+        dispatch(dislikePost(postid));
         dispatch(reset());
       };
       const likeAndReset = (postid) => {
-        dispatch(like(postid));
+        dispatch(likePost(postid));
         dispatch(reset());
       };
 
@@ -80,7 +82,7 @@ const Post = () => {
             style={{ fontSize: 40 + "px" }}
             onClick={() => dispatch(deletePost(post._id))}
           />
-          <EditOutlined onClick={() => showModal(post._id)} />
+          <EditOutlined   style={{ fontSize: 40 + "px" }} onClick={() => showModal(post._id)} />
           <Link to={"/user/" + post.userId._id}>
             <div>
               {" "}

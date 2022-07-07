@@ -35,7 +35,7 @@ const createPost = async (postBody) => {
   return res.data;
 };
 
-const like = async (_id) => {
+const likePost = async (_id) => {
   const user = JSON.parse(localStorage.getItem("user"));
   const res = await axios.put(
     API_URL + "/posts/like/" + _id,
@@ -50,7 +50,7 @@ const like = async (_id) => {
   return res.data;
 };
 
-const dislike = async (_id) => {
+const dislikePost = async (_id) => {
   const user = JSON.parse(localStorage.getItem("user"));
   const res = await axios.put(
     API_URL + "/posts/dislike/" + _id,
@@ -67,21 +67,35 @@ const dislike = async (_id) => {
 
 const deletePost = async (id) => {
   const res = await axios.delete(API_URL + "/posts/delete/" + id);
-  console.log("resdata de deletePost",res.data)
-  console.log("buscando el post borrado",res.data.post)
-  console.log("buscando el id",res.data.post._id)
+  console.log("resdata de deletePost", res.data);
+  console.log("buscando el post borrado", res.data.post);
+  console.log("buscando el id", res.data.post._id);
   return res.data;
 };
 
+const updatePost = async (post) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const res = await axios.put(
+    API_URL + "/posts/update/" + post.id,
+    post,
+     {
+      headers: {
+      authorization: user?.token,
+    },
+  });
+  console.log("resdata", res.data);
+  return res.data;
+};
 
 const postsService = {
   getAllPosts,
   getPostById,
   getPostByName,
   createPost,
-  like,
-  dislike,
+  likePost,
+  dislikePost,
   deletePost,
+  updatePost,
 };
 
 export default postsService;
