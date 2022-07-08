@@ -11,9 +11,8 @@ const EditPost = ({ visible, setVisible }) => {
   const handleCancel = () => {setVisible(false);};
   const dispatch = useDispatch();
   const onFinish = (values) => {
-    console.log(values);
+ 
     const postWithId = { ...values, id: post._id };
-    console.log(postWithId)
     dispatch(updatePost(postWithId));
     setLoading(true);
     setTimeout(() => {

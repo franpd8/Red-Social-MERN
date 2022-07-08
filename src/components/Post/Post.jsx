@@ -20,6 +20,8 @@ import EditPost from "./EditPost/EditPost";
 
 
 const Post = () => {
+  const userLog = JSON.parse(localStorage.getItem("user"))
+  const  userLogId = userLog.user._id
   const { message, posts, isLiked, isDisliked, isDeleted } = useSelector(
     (state) => state.posts
   );
@@ -45,7 +47,6 @@ const Post = () => {
     dispatch(getPostById(id))
     setIsModalVisible(true);
   };
-
   const post = posts
     .map((post) => {
       const isAlreadyLiked = post.likes?.includes(user?.user._id);
@@ -59,7 +60,7 @@ const Post = () => {
       };
 
       const dateTimeAgo = moment(post.createdAt).fromNow();
-
+      const  authorPostId = post.userId._id
       return (
         <div className="post" key={post._id}>
           A single post
@@ -68,7 +69,7 @@ const Post = () => {
             <img className="post__img" src={post.img} />
           </Link>
           {isAlreadyLiked ? (
-            <HeartFilled
+            <HeartFilled 
               style={{ fontSize: 40 + "px" }}
               onClick={() => dispatch(dislikeAndReset(post._id))}
             />
@@ -78,11 +79,17 @@ const Post = () => {
               onClick={() => dispatch(likeAndReset(post._id))}
             />
           )}{" "}
-          <DeleteOutlined
+          
+         
+          {userLogId == authorPostId?<EditOutlined   style={{ fontSize: 40 + "px" }} onClick={() => showModal(post._id)} />:null }
+
+        {userLogId == authorPostId?<DeleteOutlined
             style={{ fontSize: 40 + "px" }}
             onClick={() => dispatch(deletePost(post._id))}
-          />
-          <EditOutlined   style={{ fontSize: 40 + "px" }} onClick={() => showModal(post._id)} />
+          />:null }
+        
+        
+         
           <Link to={"/user/" + post.userId._id}>
             <div>
               {" "}

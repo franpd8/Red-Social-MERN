@@ -1,15 +1,21 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllUsers, reset } from '../../features/users/usersSlice';
+import { getAllUsers, getUserById, reset } from '../../features/users/usersSlice';
 import User from './User/User';
 
 const Users = () => {
-const { isLoading } = useSelector((state) => state.users);
+const { isLoading,isFollowing,userDetails } = useSelector((state) => state.users);
   const dispatch = useDispatch();
+  const userLog = JSON.parse(localStorage.getItem("user"))
+  const  userLogId = userLog.user._id
+  // const userFollowing = userDetails.following?.map( user => user._id)
+  // console.log("hola",userFollowing)
+
 
   const getUsersAndReset = async () => {
-    await dispatch(getAllUsers());
-    dispatch(reset());
+    await dispatch(getAllUsers())
+    await dispatch(getUserById(userLogId))
+    dispatch(reset())
   };
 
   useEffect(() => {

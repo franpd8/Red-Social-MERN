@@ -11,6 +11,7 @@ const initialState = {
   isDisliked: false,
   isDeleted:false,
   isEdit:false,
+  message:"",
 };
 
 // *** Functions ***
@@ -68,20 +69,22 @@ export const dislikePost = createAsyncThunk("posts/dislikePost", async (_id) => 
   }
 });
 //  *** Delete a Post
-export const deletePost = createAsyncThunk("posts/deletePost", async (id) => {
+export const deletePost = createAsyncThunk("posts/deletePost", async (id,thunkAPI) => {
   try {
     return await postsService.deletePost(id);
-  } catch (error) {
-    console.error(error);
+  } catch (error) { 
+    const message = error.response.data.message;
+    return thunkAPI.rejectWithValue(message);
   }
 });
 
 //  *** Edit a Post
-export const updatePost = createAsyncThunk("posts/update", async (post) => {
+export const updatePost = createAsyncThunk("posts/update", async (post,thunkAPI) => {
   try {
     return await postsService.updatePost(post);
   } catch (error) {
-    console.error(error);
+    const message = error.response.data.message;
+    return thunkAPI.rejectWithValue(message);
   }
 });
 
@@ -99,6 +102,7 @@ export const postsSlice = createSlice({
       state.isLiked = false;
       state.isDisliked = false;
       state.isDeleted = false;
+      state.isEdit = false;
     },
   },
   extraReducers: (builder) => {
@@ -164,6 +168,11 @@ export const postsSlice = createSlice({
           (post) => post._id !== action.payload.post._id
         );
       })
+      .addCase(deletePost.rejected, (state, action) => {
+        state.isError = true;
+        state.message = action.payload;
+      })
+      // *** Edit a Post 
       .addCase(updatePost.fulfilled, (state, action) => {
         console.log("payload",action.payload)
         const posts = state.posts.map((post) => {
@@ -176,7 +185,12 @@ export const postsSlice = createSlice({
         state.message = action.payload.message;
         state.posts = posts;
         state.isEdit = true;
-      });
+        state.isSuccess = true;
+      })
+      .addCase(updatePost.rejected, (state, action) => {
+        state.isError = true;
+        state.message = action.payload;
+      })
 
 
   },

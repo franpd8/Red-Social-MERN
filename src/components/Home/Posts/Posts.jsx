@@ -9,10 +9,7 @@ const { Search } = Input;
 
 const Posts = () => {
   const { isLoading,posts } = useSelector((state) => state.posts);
-
   const dispatch = useDispatch();
-
-
   const getPostsAndReset = async () => {
     await dispatch(getAllPosts());
     dispatch(reset());
@@ -21,8 +18,6 @@ const Posts = () => {
   useEffect(() => {
     getPostsAndReset();
   }, []);
-
- 
 
   if (isLoading) {
     return <div className="home__posts"><h1>Cargando post...</h1>;</div>
