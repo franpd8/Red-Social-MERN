@@ -63,7 +63,7 @@ const [edit,SetEdit] = useState(initialValue);
         </div> */}
         <div className="userDescription">{userData.bio}</div>
         <div className="userExtLink">
-          <LinkOutlined /> Possible External Link
+          <LinkOutlined /> {userData.link}
         </div>
         <div className="userMemberAgo">
           {" "}

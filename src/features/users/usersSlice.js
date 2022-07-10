@@ -9,6 +9,7 @@ const initialState = {
   userDetails:{},
   isFollowing:false,
   isUnFollowing:false,
+  isUpdated:false,
   message:"",
 
 };
@@ -49,7 +50,7 @@ export const followUser = createAsyncThunk("users/followUser", async (userId,thu
   }
 });
 
- //  //  *** Follow a User  ****
+ //   *** Follow a User  ****
  export const unFollowUser = createAsyncThunk("users/unFollowUser", async (userId,thunkAPI) => {
   try {
     return await usersService.unFollowUser(userId);
@@ -58,6 +59,17 @@ export const followUser = createAsyncThunk("users/followUser", async (userId,thu
     return thunkAPI.rejectWithValue(message);
   }
 });
+//  *** Update User *** 
+
+export const updateUser = createAsyncThunk("users/updateUser", async (userBody,thunkAPI)=> {
+  try{
+
+    return await usersService.updateUser(userBody);
+  } catch (error){
+    const message = error.response.data.message;
+    return thunkAPI.rejectWithValue(message)
+  }
+})
   
 
 export const usersSlice = createSlice({
@@ -72,6 +84,7 @@ export const usersSlice = createSlice({
       state.isError= false;
       state.isFollowing =false;
       state.isUnFollowing = false;
+      state.isUpdated= false;
     }  
   },
   extraReducers: (builder) => {
@@ -131,6 +144,24 @@ export const usersSlice = createSlice({
     .addCase(unFollowUser.rejected, (state, action) => {
       state.message = action.payload
       state.isError = true;
+    })
+
+    .addCase(updateUser.fulfilled, (state, action) => {
+      const users = state.users.map((user) => {
+
+        if (user._id === action.payload.user._id) {
+          user = action.payload.user;
+        }
+        return user;
+      });
+      state.message = action.payload.message;
+      state.users = users;
+      state.isEdit = true;
+      state.isSuccess = true;
+    })
+    .addCase(updateUser.rejected, (state, action) => {
+      state.isError = true;
+      state.message = action.payload;
     })
    },
   })

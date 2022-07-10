@@ -16,12 +16,7 @@ const getUserById = async (id) => {
     return res.data;
   };
   
-// const getUserByName = async (userName) => {
-//     const res = await axios.get(API_URL + "/posts/search/" + userName);
-//     console.log("respuesta",res.data)
-//     return res.data;
-//   };
-  
+
   const followUser = async (userId) => {
     const user = JSON.parse(localStorage.getItem("user"));
     const res = await axios.put(API_URL + "/users/follow/" + userId,
@@ -46,11 +41,26 @@ const getUserById = async (id) => {
   };
 
 
+const updateUser = async (userData) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const res = await axios.put(
+    API_URL + "/users/update/" + userData.id,
+    userData,
+     {
+      headers: {
+      authorization: user?.token,
+    },
+  });
+  return res.data;
+};
+
+
 const postsService = {
   getAllUsers,
   getUserById,
   followUser,
-  unFollowUser
+  unFollowUser,
+  updateUser
 };
 
 export default postsService;

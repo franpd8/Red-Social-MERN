@@ -1,15 +1,25 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+
+import { useDispatch } from "react-redux";
 
 import { Button, Form, Input } from "antd";
+import { reset, updateUser } from "../../../features/users/usersSlice";
+import { useState } from "react";
 const { TextArea } = Input;
 function EditBio({ userData }) {
     const dispatch = useDispatch();
+    const [loading, setLoading] = useState(false);
 
 
   const onFinish = (values) => {
-    console.log("Success:", values);
-    // dispatch(register(values))
+    const userWithId = { ...values, id: userData._id };
+    setLoading(true);
+   
+    
+    setTimeout(() => {
+        setLoading(false);
+        dispatch(updateUser(userWithId));
+        dispatch(reset())
+      }, 2000);
 
   };
 
@@ -46,10 +56,12 @@ function EditBio({ userData }) {
         </Form.Item>
         <Form.Item>
           <Button
+          id= "submitEditBtn"
             style={{ width: "100%" }}
             type="primary"
             htmlType="submit"
             className="login-form-button"
+            loading={loading}
           >
             Save Changes
           </Button>

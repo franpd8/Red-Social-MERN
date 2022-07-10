@@ -10,6 +10,8 @@ const { TabPane } = Tabs;
 
 const Profile = () => {
   const { userData, isLoading } = useSelector((state) => state.auth);
+  const { users} = useSelector((state) => state.users);
+  
 
   const dispatch = useDispatch();
 
@@ -21,7 +23,7 @@ const Profile = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     getAllUserInfoAndReset();
-  }, []);
+  }, [users]);
 
   if (isLoading) {
     return (

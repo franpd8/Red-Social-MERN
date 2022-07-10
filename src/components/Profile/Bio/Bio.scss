@@ -25,7 +25,7 @@
         position:absolute;
         right:5vw;
        
-        button{
+        button, #submitEditBtn{
             margin-left:1vw;
             border-radius:30px;
             border: 1px solid black;
@@ -50,6 +50,7 @@
                  background-color: black;
            
              }
+             
         
     }
     div {
@@ -94,7 +95,7 @@
       }
     }
     .userDescription {
-      border: 1px solid blue;
+    
       margin: 2vw 0;
     }
 
@@ -106,4 +107,18 @@
       width: fit-content;
     }
   }
+}
+
+#submitEditBtn{
+    border-radius:30px;
+            border: 1px solid black;
+           height:2.4em;
+            font-size:18px;
+            background-color: black;
+            color:white;
+            font-weight:700;    
+}
+
+.userProfile .userProfile__info div{
+    padding:0;
 }
