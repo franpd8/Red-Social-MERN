@@ -8,7 +8,6 @@ const User = () => {
     const {users,isError,isSuccess,message,isFollowing,isUnFollowing} = useSelector((state) => state.users);
    const { userData} = useSelector((state)=> state.auth)
     // list of people the logged user is following
-    console.log(userData)
     const loggedUserFollowing = userData.following?.map( user => user._id)
     const dispatch = useDispatch()
     const openNotification = (type, messageTitle, placement) => {
@@ -48,7 +47,7 @@ const User = () => {
     //  check if you are following the user   
     const  imFollowing = loggedUserFollowing.includes(userId)
     
-    
+
         return (
           <div className="user" key={userdata._id}>
             A single user 

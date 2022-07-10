@@ -7,32 +7,15 @@ import Following from "../../../Profile/Following/Following";
 import Profile from "../../../Profile/Profile";
 import UserPosts from "../../../Profile/UserPosts/UserPosts";
 import { getUserInfo } from "../../../../features/auth/authSlice";
+import Bio from "../../../Profile/Bio/Bio";
 
 const UserDetail = () => {
   
    const [followButton, setFollowButton] = useState(false);
    const {isLoading,users,isError,isSuccess,message,isFollowing,isUnFollowing,userDetails} = useSelector((state) => state.users);
    const { userData} = useSelector((state) => state.auth);
-
-   // list of people the user is following
-   const userId= userDetails._id
-   const userFollowing = userDetails.following?.map( user => user._id)
-    // console.log("gente que sigue el perfil",userFollowing)
-
-  //   logged user info  del local storage (MAL)
-  const user = JSON.parse(localStorage.getItem("user"));
-const loggedUser = userData
-const loggedUserFollowing = loggedUser.following?.map(user => user._id)
-//  console.log("gente que sigue el usuario logueado", loggedUserFollowing)
-
-const imFollowing = loggedUserFollowing.includes(userId)
-console.log("¿Sigo a este usuario", imFollowing)
-
-  const { id } = useParams();
+   const { id } = useParams();
   const dispatch = useDispatch();
-
-  
-
 
   const getAllUserInfoAndReset = async () => {
     await dispatch(getUserInfo());
@@ -76,15 +59,41 @@ console.log("¿Sigo a este usuario", imFollowing)
     dispatch(reset());
   }, [isError, isSuccess,isFollowing,isUnFollowing]);
 
+console.log("userData = usuario logueado",userData)
+console.log("userDetails = usuario con id ",userDetails)
+   // list of people the user is following
+   const userId= userDetails._id
+   const userFollowing = userDetails.following?.map( user => user._id)
+  console.log("gente que sigue el perfil",userFollowing)
+
+const loggedUser= userData
+const loggedUserId = userData._id
+
+const loggedUserFollowing = loggedUser.following?.map(user => user._id)
+ console.log("gente que sigue el usuario logueado", loggedUserFollowing)
+
+// const imfollowed = userFollowing.includes(loggedUserId)
+// console.log("¿Me sigue este usuario?",imfollowed)
+
+const imFollowing = loggedUserFollowing.includes(userId)
+console.log("¿Sigo a este usuario", imFollowing)
+
+  
+
+
   if (isLoading) {
     return  <div className="userDetail"><h1>Loading user...</h1></div>;
   }
   return (
     <div className="userDetail">
+
     <h1>Profile</h1>
-      <p>Name: {userDetails.name}</p>
+
+
+      {/* <p>Name: {userDetails.name}</p>
       <p>Email: {userDetails.email}</p>
-      <img src={userDetails.avatar} />
+      <img src={userDetails.avatar} /> */}
+      <Bio userData={userDetails}/>
 
       {imFollowing?<button onClick={() => unFollowAndReset(userDetails._id)}>Unfollow</button> : <button onClick={() => FollowAndReset(userDetails._id)}>Follow</button>}
 

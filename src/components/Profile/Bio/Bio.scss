@@ -23,33 +23,60 @@
   }
   .userProfile__info {
   
-    padding: 12vw  5vw 5vw;
+    padding: 10vw  5vw 5vw;
     border: 10px solid green;
+    div{
+        padding:0.4em 0 ;
+    }
     .userNameFollow{
         display:flex;
-        
         .userName{
-            border: 5px solid pink;
+            border: 1px solid pink;
             margin-right:1em;
         }
         .userIsFollowing{
-            border: 5px solid purple;
+            display: flex;
+            align-self: center;
+            border: 1px solid purple;
+            text-transform: uppercase;
+            font-size:10px;
+            padding: 0.3em 0.8em;
+            font-weight: 700;
+            border-radius: 8px;
         }
 
     }
-    
     .userEmail{
-        border: 5px solid red;
+        border: 1px solid red;
         width: fit-content; 
     }
+    .userStats{
+        display:flex;
+        .stats{
+            font-size:14px;
+            font-weight:700;
+
+        }
+        .userFollowers{
+            border: 1px solid red;
+            width: fit-content;
+        }
+        .userFollowing{
+            border: 1px solid red;
+            width: fit-content;
+            margin-right:1em;
+        }
+    }
     .userBio{
-        border:5px solid blue;
+        border:1px solid blue;
         margin: 2vw 0 ; 
         
     }
-
+.userExtLink{
+    border:1px solid green;
+}
     .userMemberAgo{
-        border: 5px solid black;
+        border:1px solid black;
         width: fit-content; 
     }
 

@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from "react";
-// import moment from "moment";
 import { getUserInfo, reset } from "../../features/auth/authSlice";
 import Following from "./Following/Following";
 import UserPosts from "./UserPosts/UserPosts";
@@ -10,7 +9,7 @@ import Bio from "./Bio/Bio";
 const { TabPane } = Tabs;
 
 const Profile = () => {
-  const { user, userData, isLoading } = useSelector((state) => state.auth);
+  const { userData, isLoading } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
 
@@ -31,16 +30,10 @@ const Profile = () => {
       </div>
     );
   }
-  // const createdTimeAgo = moment(userData.createdAt).fromNow();
+  
   return (
     <div className="profile">
-      {/* <div className="userProfile">
-        <h1>Profile</h1>
-        <p>Name: {userData.name}</p>
-        <p>Email: {userData.email}</p>
-        <img src={userData.avatar} />
-        <p> Member since: {createdTimeAgo} </p>
-      </div> */}
+    
 
 <Bio userData={userData}/>
       <Tabs defaultActiveKey="1" centered>
