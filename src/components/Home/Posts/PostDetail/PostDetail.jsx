@@ -22,7 +22,9 @@ const PostDetail = () => {
     <div className="postDetail">
       Post Detail
       <h3>Titulo: {post.title}</h3>
+      <div><img src={post.img}/></div>
       <p> Descripcion: {post.body}</p>
+      
       Comentario: <div className="commentSection">
         <CommenList/>
 

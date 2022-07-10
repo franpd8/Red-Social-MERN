@@ -1,17 +1,30 @@
-import { useSelector } from "react-redux";
-import moment from "moment";
+import { HeartFilled, MessageFilled } from "@ant-design/icons";
 import { Link } from "react-router-dom";
+import "./UserPosts.scss";
 function UserPosts({ userData }) {
   const posts = userData.postIds?.map((post) => {
-    const dateTimeAgo = moment(post.createdAt).fromNow();
     return (
       <div className="userPosts__post" key={post._id}>
         <Link to={"/post/" + post._id}>
-          <p>
-            <img style={{ width: 100 + "%" }} src={post.img} />
-          </p>
-          <p> Title: {post.title}</p>
-          <p> Date: {dateTimeAgo}</p>
+          <div className="container">
+            <div className="overlay"></div>
+            <div className="overlay__hover">
+              <div className="likes">
+                {" "}
+                <HeartFilled /> {post.likes.length}
+              </div>
+              <div className="comments">
+                {" "}
+                <MessageFilled /> {post.comments.length}
+              </div>
+            </div>
+            <img
+              className="image"
+              style={{ width: 100 + "%" }}
+              src={post.img}
+            />
+          </div>
+          <div className="postTitle"> {post.title}</div>
         </Link>
       </div>
     );

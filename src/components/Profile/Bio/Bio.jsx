@@ -13,6 +13,7 @@ const [edit,SetEdit] = useState(initialValue);
   const userLog = JSON.parse(localStorage.getItem("user"))
   const userLogId = userLog.user._id
  const avatar = userData.avatar
+ const header = userData.header
  const dispatch = useDispatch();
  const FollowAndReset = (id) => {
     dispatch(followUser(id));
@@ -25,11 +26,13 @@ const [edit,SetEdit] = useState(initialValue);
 
   return (
     <div className="userProfile">
-      <div className="userProfile__header"></div>
+      <div className="userProfile__header">
+        <img className="userHeader" src={header?header:"https://i.imgur.com/V1nLI5q.jpg"} />
+      </div>
       <div className="userProfile__info">
       <div className="userButtons">
       
-{ user == userLogId? <> <button className="Editbtn" onClick={() => SetEdit((initial) => !initial)}>
+{ user == userLogId? <> <button className="editBtn" onClick={() => SetEdit((initial) => !initial)}>
           Edit profile
         </button  >  </> : <>{imFollowing ? <> 
         <button className="settingsBtn"><EllipsisOutlined /></button><button className="DMbtn" >
