@@ -1,4 +1,5 @@
 import AddPost from "./AddPost/AddPost";
+import Login from "./../../components/Login/Login";
 import Posts from "./Posts/Posts";
 import SearchPost from "./Posts/SearchPost/SearchPost";
 import { BackTop } from "antd";
@@ -17,6 +18,8 @@ const style = {
 };
 
 const Home = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+
   <div
     style={{
       height: "600vh",
@@ -26,11 +29,12 @@ const Home = () => {
   return (
     <div className="home">
       
-      <AddPost />
+      {user?<><AddPost />
       <h1>Home</h1>
       <SearchPost />
       <h2>Here will display all Posts</h2>
-      <Posts />
+      <Posts /> </> : <Login/> }
+    
       <BackTop>
         <div style={style}><UpSquareFilled  style={{ fontSize: 32 + "px" }} /></div>
       </BackTop>

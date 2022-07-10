@@ -1,0 +1,57 @@
+.userProfile {
+  position: relative;
+
+  .userProfile__header {
+    border: 10px solid purple;
+    background-image: url(https://i.imgur.com/gQ1Enb7.jpg);
+    background-size: cover;
+    background-position: center;
+    height:20vh;
+  }
+  .userAvatar {
+    position: absolute;
+    top: 20vh;
+    transform: translateY(-50%);
+    margin-left:5vw;   
+
+    border: 10px solid white;
+    border-radius:100%;
+    img {
+      height: 18vw;
+      border-radius:100%;
+    }
+  }
+  .userProfile__info {
+  
+    padding: 12vw  5vw 5vw;
+    border: 10px solid green;
+    .userNameFollow{
+        display:flex;
+        
+        .userName{
+            border: 5px solid pink;
+            margin-right:1em;
+        }
+        .userIsFollowing{
+            border: 5px solid purple;
+        }
+
+    }
+    
+    .userEmail{
+        border: 5px solid red;
+        width: fit-content; 
+    }
+    .userBio{
+        border:5px solid blue;
+        margin: 2vw 0 ; 
+        
+    }
+
+    .userMemberAgo{
+        border: 5px solid black;
+        width: fit-content; 
+    }
+
+  }
+}

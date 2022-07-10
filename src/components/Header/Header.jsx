@@ -55,12 +55,15 @@ const Header = () => {
           </>
         ) : (
           <>
-            <span>
+            {/* <span>
               <Link to="/login">Login</Link>
             </span>
             <span>
               <Link to="/register">Register</Link>
-            </span>
+            </span> */
+            }
+
+            Bienvenido imagen 
           </>
         )}
       </div>
