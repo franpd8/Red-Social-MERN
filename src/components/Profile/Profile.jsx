@@ -34,8 +34,7 @@ const Profile = () => {
   return (
     <div className="profile">
     
-
-<Bio userData={userData}/>
+<Bio className="bio" userData={userData}/>
       <Tabs defaultActiveKey="1" centered>
         <TabPane tab="Posts" key="1">
           <UserPosts userData={userData} />

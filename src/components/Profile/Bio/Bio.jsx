@@ -3,7 +3,11 @@ import { CalendarOutlined, LinkOutlined, MailOutlined,EllipsisOutlined } from "@
 import {followUser,reset,unFollowUser,} from "../../../features/users/usersSlice";
 import "./Bio.scss";
 import { useDispatch } from "react-redux";
+import { useState } from "react";
+import EditBio from "../EditBio/EditBio";
 function Bio({ userData,imFollowed,imFollowing}) {
+    const initialValue = true;
+const [edit,SetEdit] = useState(initialValue);
   const createdTimeAgo = moment(userData.createdAt).fromNow();
   const user = userData._id
   const userLog = JSON.parse(localStorage.getItem("user"))
@@ -19,24 +23,13 @@ function Bio({ userData,imFollowed,imFollowing}) {
     dispatch(reset());
   };
 
-
-
-//   { user == userLogId? console.log("soy yo") :{imFollowing ? (
-//     <button className="followBtn" onClick={() => unFollowAndReset(userData._id)}>
-//       Unfollow
-//     </button>
-//   ) : (
-//     <button onClick={() => FollowAndReset(userData._id)}>Follow</button>
-//   )}}
-  
-
   return (
     <div className="userProfile">
       <div className="userProfile__header"></div>
       <div className="userProfile__info">
       <div className="userButtons">
       
-{ user == userLogId? <> <button className="Editbtn">
+{ user == userLogId? <> <button className="Editbtn" onClick={() => SetEdit((initial) => !initial)}>
           Edit profile
         </button  >  </> : <>{imFollowing ? <> 
         <button className="settingsBtn"><EllipsisOutlined /></button><button className="DMbtn" >
@@ -49,14 +42,16 @@ function Bio({ userData,imFollowed,imFollowing}) {
         <button className="followBtn" onClick={() => FollowAndReset(userData._id)}>Follow</button>
       )} </>}
       </div>
+
+
+      {edit? <>
         <div className="userNameFollow">
+        <div className="userBio">
           <div className="userName"> {userData.name} </div>
           {imFollowed? <><div className="userIsFollowing">follows you </div></>: null }
-        </div>
+        
         <div className="userEmail">{userData.email}</div>
-
-
-{/* Comentado porque explota :(  */}
+        {/* Comentado porque explota :(  */}
         {/* <div className="userStats">
           <div className="userFollowing">
             <span className="stats">{userData?.following.length}</span> Following{" "}
@@ -66,15 +61,36 @@ function Bio({ userData,imFollowed,imFollowing}) {
             <span className="stats">{userData.followers.length}</span> Followers{" "}
           </div>
         </div> */}
-        <div className="userBio">{userData.bio}</div>
+        <div className="userDescription">{userData.bio}</div>
         <div className="userExtLink">
-         
           <LinkOutlined /> Possible External Link
         </div>
         <div className="userMemberAgo">
           {" "}
           <CalendarOutlined /> Member Since {createdTimeAgo}{" "}
         </div>
+        </div>
+        </div>
+      
+      
+      </> : <>
+      
+ <EditBio userData={userData} />
+      
+      
+        
+        
+       </>  }
+
+      
+        
+       
+
+
+
+
+        
+        
       </div>
       <div className="userAvatar">
         <img src={avatar?avatar:"https://i.imgur.com/Svw4Sam.png"} />
