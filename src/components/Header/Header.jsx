@@ -24,15 +24,16 @@ const Header = () => {
     if (isSuccessLogOut) {
       openNotification("success","Log out Succesfully :)","top")
     }   
-    dispatch(reset());
+    
   }, [isSuccessLogOut]);
 
   const onLogout = (e) => {
+    
     dispatch(logout());
   };
 
-if(pathname == "/login"){
-  return null }
+// if(pathname == "/login"){
+//   return null }
 
 
   return (
@@ -56,19 +57,7 @@ if(pathname == "/login"){
               </Link>
             </div>
           </>
-        ) : (
-          <>
-            {/* <span>
-              <Link to="/login">Login</Link>
-            </span>
-            <span>
-              <Link to="/register">Register</Link>
-            </span> */
-            }
-
-            Bienvenido imagen 
-          </>
-        )}
+        ) : <>hola</>}
       </div>
     </nav>
     </div>

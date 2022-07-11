@@ -16,28 +16,92 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-
-        <Header />
         <Routes>
-        <Route path="/login" element={<Login />} />
-        </Routes>
-        <div className="margin">
-        <Routes>
-          <Route path="/" element={<Home />} />
-         
+          <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/profile" element={<PrivateZone>
-                <Profile />
-              </PrivateZone>} />
-          <Route path="/posts" element={<Posts />} />
-          <Route path="/post/:id" element={<PostDetail />} />
-          <Route path="/user/:id" element={<UserDetail />} />
-          <Route path="/search/posts/:title" element={<Search />} />
-          <Route path="/users" element={<Users />} />
-          
-
         </Routes>
-        </div>
+
+        {/* <div className="margin"> */}
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <PrivateZone>
+                <Header />
+                <div className="margin">
+                  <Home />
+                </div>
+              </PrivateZone>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <PrivateZone>
+                <Header />
+                <div className="margin">
+                  <Profile />
+                </div>
+              </PrivateZone>
+            }
+          />
+          <Route
+            path="/posts"
+            element={
+              <>
+                <Header />
+                <div className="margin">
+                  <Posts />
+                </div>
+              </>
+            }
+          />
+          <Route
+            path="/post/:id"
+            element={
+              <>
+                <Header />
+                <div className="margin">
+                  <PostDetail />
+                </div>
+              </>
+            }
+          />
+          <Route
+            path="/user/:id"
+            element={
+              <>
+                <Header />
+                <div className="margin">
+                  <UserDetail />
+                </div>
+              </>
+            }
+          />
+          <Route
+            path="/search/posts/:title"
+            element={
+              <>
+                <Header />
+                <div className="margin">
+                  <Search />
+                </div>
+              </>
+            }
+          />
+          <Route
+            path="/users"
+            element={
+              <>
+                <Header />
+                <div className="margin">
+                  <Users />
+                </div>
+              </>
+            }
+          />
+        </Routes>
+        {/* </div> */}
       </BrowserRouter>
     </div>
   );

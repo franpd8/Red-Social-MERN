@@ -37,7 +37,7 @@ const Home = () => {
       {user?<><AddPost />
       <h1>Home</h1>
       <SearchPost />
-      <Posts /> </> : <Login/> }
+      <Posts /> </> :null }
       <BackTop>
         <div style={style}><UpSquareFilled  style={{ fontSize: 32 + "px" }} /></div>
       </BackTop>

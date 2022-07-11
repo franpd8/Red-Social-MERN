@@ -1,6 +1,6 @@
 import { useLocation} from"react-router"
 import { useDispatch, useSelector } from "react-redux";
-import {  useNavigate } from "react-router-dom";
+import {  useNavigate,Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 
@@ -38,8 +38,6 @@ const Login = () => {
   };
 
 
-
-
   const openNotification = (type, messageTitle, placement) => {
     notification[type]({
       className: "notification-class",
@@ -50,6 +48,13 @@ const Login = () => {
   };
   
   return (
+
+    <>
+   
+            <span>
+              <Link to="/register">Register</Link>
+            </span>
+
     <Form
       name="login"
       onFinish={onFinish}
@@ -98,6 +103,7 @@ const Login = () => {
         </Button>
       </Form.Item>
     </Form>
+    </>
   );
 };
 export default Login;
