@@ -2,17 +2,17 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import {
-  followUser,
   getUserById,
-  reset,
-  unFollowUser,
+  reset
 } from "../../../../features/users/usersSlice";
 import { notification } from "antd";
-import Following from "../../../Profile/Following/Following";
-import Profile from "../../../Profile/Profile";
-import UserPosts from "../../../Profile/UserPosts/UserPosts";
 import { getUserInfo } from "../../../../features/auth/authSlice";
 import Bio from "../../../Profile/Bio/Bio";
+import { Tabs } from "antd";
+import Following from "../../../Profile/Following/Following";
+import Follower from "../../../Profile/Follower/Follower";
+import UserPosts from "../../../Profile/UserPosts/UserPosts";
+const { TabPane } = Tabs;
 
 const UserDetail = () => {
   const {
@@ -27,26 +27,33 @@ const UserDetail = () => {
   const { userData } = useSelector((state) => state.auth);
   const { id } = useParams();
   const dispatch = useDispatch();
+  const [load, setLoad] = useState(false)
 
-  const getAllUserInfoAndReset = async () => {
-    await dispatch(getUserInfo());
-    dispatch(reset());
-  };
-  // const FollowAndReset = (id) => {
-  //   dispatch(followUser(id));
-
-  //   dispatch(reset());
-  // };
-  // const unFollowAndReset = (id) => {
-  //   dispatch(unFollowUser(id));
-
-  //   dispatch(reset());
-  // };
-  useEffect(() => {
+  const imFollowed = false
+  const imFollowing = false
+  if(load){
+    console.log("ha cargado load?",load)
+    // list of people the user is following
+    const userId = userDetails._id;
+    const userFollowing = userDetails?.following?.map((user) => user._id);
+    const loggedUser = userData;
+    // list of people the logged user is following
+    const loggedUserId = userData._id;
+    const loggedUserFollowing = loggedUser.following?.map((user) => user._id);
+    const imFollowed = userFollowing.includes(loggedUserId);
+    console.log("me sigue?",imFollowed)
+    const imFollowing = loggedUserFollowing.includes(userId);
+    console.log("sigo?",imFollowing)
+  }
+  
+  const loadSys = async() => {
     window.scrollTo(0, 0);
-    dispatch(getUserById(id));
-    getAllUserInfoAndReset();
-    dispatch(reset());
+    await dispatch(getUserById(id));
+    await dispatch(getUserInfo());
+    setLoad(true)
+  }
+  useEffect(() => {
+    loadSys()
   }, [id]);
 
   const openNotification = (type, messageTitle, placement) => {
@@ -70,39 +77,31 @@ const UserDetail = () => {
     dispatch(reset());
   }, [isError, isSuccess, isFollowing, isUnFollowing]);
 
-  // list of people the user is following
-  const userId = userDetails._id;
-  const userFollowing = userDetails?.following?.map((user) => user._id);
-  const loggedUser = userData;
-  // list of people the logged user is following
-  const loggedUserId = userData._id;
-  const loggedUserFollowing = loggedUser.following?.map((user) => user._id);
-  // const imFollowed = userFollowing.includes(loggedUserId);
-  const imFollowing = loggedUserFollowing.includes(userId);
-
-  if (isLoading) {
-    return (
-      <div className="userDetail">
-        <h1>Loading user...</h1>
-      </div>
-    );
-  }
+ 
   return (
+    !load?  
+      
     <div className="userDetail">
-      <Bio userData={userDetails} 
-      // imFollowed={imFollowed} 
-      imFollowing={imFollowing} 
-      />
-      {/* {imFollowing ? (
-        <button className="followBtn" onClick={() => unFollowAndReset(userDetails._id)}>
-          Unfollow
-        </button>
-      ) : (
-        <button onClick={() => FollowAndReset(userDetails._id)}>Follow</button>
-      )} */}
-      <Following userData={userDetails} />
-      <UserPosts userData={userDetails} />
-    </div>
+          <h1>Loading user...</h1>
+       </div> 
+  : 
+       <div className="userDetail">
+         <Bio userData={userDetails} 
+         imFollowed={imFollowed} 
+         imFollowing={imFollowing} 
+         />
+         <Tabs defaultActiveKey="1" centered>
+              <TabPane tab="Posts" key="1">
+            <UserPosts userData={userData} />
+          </TabPane>
+          <TabPane tab="Following" key="2">
+            <Following userData={userData} />
+          </TabPane>
+          <TabPane tab="Followers" key="3">
+            <Follower userData={userData} />
+          </TabPane>
+        </Tabs>
+       </div>
   );
 };
 

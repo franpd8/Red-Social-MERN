@@ -7,7 +7,7 @@ import { useState } from "react";
 import EditBio from "../EditBio/EditBio";
 function Bio({ userData,imFollowed,imFollowing}) {
     const initialValue = true;
-const [edit,SetEdit] = useState(initialValue);
+const [edit,setEdit] = useState(initialValue);
   const createdTimeAgo = moment(userData.createdAt).fromNow();
   const user = userData._id
   const userLog = JSON.parse(localStorage.getItem("user"))
@@ -32,9 +32,15 @@ const [edit,SetEdit] = useState(initialValue);
       <div className="userProfile__info">
       <div className="userButtons">
       
-{ user == userLogId? <> <button className="editBtn" onClick={() => SetEdit((initial) => !initial)}>
+{ user == userLogId? 
+    <> 
+    <button className="editBtn" onClick={() => setEdit((initial) => !initial)}>
           Edit profile
-        </button  >  </> : <>{imFollowing ? <> 
+        </button>  
+    </> 
+    : 
+    <> {console.log("de verdad lo sigo?",imFollowing)}
+    {imFollowing ? <> 
         <button className="settingsBtn"><EllipsisOutlined /></button><button className="DMbtn" >
         <MailOutlined />
         </button>  
@@ -55,7 +61,7 @@ const [edit,SetEdit] = useState(initialValue);
         
         <div className="userEmail">{userData.email}</div>
         {/* Comentado porque explota :(  */}
-        {/* <div className="userStats">
+        <div className="userStats">
           <div className="userFollowing">
             <span className="stats">{userData?.following.length}</span> Following{" "}
           </div>
@@ -63,7 +69,7 @@ const [edit,SetEdit] = useState(initialValue);
           <div className="userFollowers">
             <span className="stats">{userData.followers.length}</span> Followers{" "}
           </div>
-        </div> */}
+        </div>
         <div className="userDescription">{userData.bio}</div>
         <div className="userExtLink">
           <LinkOutlined /> {userData.link}
@@ -78,7 +84,7 @@ const [edit,SetEdit] = useState(initialValue);
       
       </> : <>
       
- <EditBio userData={userData} />
+ <EditBio userData={userData} edit={edit} setEdit={setEdit}/>
       
       
         

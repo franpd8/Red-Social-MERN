@@ -4,23 +4,20 @@ import { useDispatch } from "react-redux";
 import { Button, Form, Input } from "antd";
 import { reset, updateUser } from "../../../features/users/usersSlice";
 import { useState } from "react";
+// import { getUserInfo } from "../../../features/auth/authSlice";
 const { TextArea } = Input;
-function EditBio({ userData }) {
+function EditBio({ userData,edit,setEdit }) {
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);
-
-
   const onFinish = (values) => {
     const userWithId = { ...values, id: userData._id };
     setLoading(true);
-   
-    
     setTimeout(() => {
         setLoading(false);
         dispatch(updateUser(userWithId));
         dispatch(reset())
+        setEdit((initial) => !initial)
       }, 2000);
-
   };
 
   const onFinishFailed = (errorInfo) => {

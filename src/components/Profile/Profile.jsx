@@ -1,55 +1,79 @@
 import { useDispatch, useSelector } from "react-redux";
-import React, { useEffect } from "react";
-import { getUserInfo, reset } from "../../features/auth/authSlice";
+import React, { useEffect, useState } from "react";
+import { getUserInfo } from "../../features/auth/authSlice";
+
+
 import Following from "./Following/Following";
 import UserPosts from "./UserPosts/UserPosts";
 import Follower from "./Follower/Follower";
 import { Tabs } from "antd";
 import Bio from "./Bio/Bio";
+import { notification } from "antd";
+import { reset } from "../../features/users/usersSlice";
 const { TabPane } = Tabs;
 
 const Profile = () => {
-  const { userData, isLoading } = useSelector((state) => state.auth);
-  const { users} = useSelector((state) => state.users);
   
-
+  const { userData} = useSelector((state) => state.auth);
+  const { users,isError, isSuccess, message} = useSelector((state) => state.users);
+  const [load, setLoad] = useState(false)
   const dispatch = useDispatch();
-
   const getAllUserInfoAndReset = async () => {
     await dispatch(getUserInfo());
     dispatch(reset());
   };
+  const loadSys = async() => {
+    window.scrollTo(0, 0);
+    await getAllUserInfoAndReset();
+    setLoad(true)
+  }
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-    getAllUserInfoAndReset();
+    loadSys()
   }, [users]);
 
-  if (isLoading) {
-    return (
+  const openNotification = (type, messageTitle, placement) => {
+    notification[type]({
+      className: "notification-class",
+      message: messageTitle,
+      description: message,
+      placement,
+    });
+  };
+
+  useEffect(() => {
+    if (isError) {
+      openNotification("error", "Error :(", "top");
+    }
+    if (isSuccess) {
+      openNotification("success", "Éxito :)", "top");
+    }
+    
+    dispatch(reset());
+  }, [isError, isSuccess]);
+
+  return (
+    !load?
       <div className="profile">
         <h1>Loading User Details...</h1>
       </div>
-    );
-  }
-  
-  return (
-    <div className="profile">
-    
-<Bio className="bio" userData={userData}/>
-      <Tabs defaultActiveKey="1" centered>
-        <TabPane tab="Posts" key="1">
-          <UserPosts userData={userData} />
-        </TabPane>
-        <TabPane tab="Following" key="2">
-          <Following userData={userData} />
-        </TabPane>
-        <TabPane tab="Followers" key="3">
-          <Follower userData={userData} />
-        </TabPane>
-      </Tabs>
-    </div>
-  );
-};
+      :
+        <div className="profile">
+          <Bio className="bio" userData={userData}/>
+            <Tabs defaultActiveKey="1" centered>
+              <TabPane tab="Posts" key="1">
+            <UserPosts userData={userData} />
+          </TabPane>
+          <TabPane tab="Following" key="2">
+            <Following userData={userData} />
+          </TabPane>
+          <TabPane tab="Followers" key="3">
+            <Follower userData={userData} />
+          </TabPane>
+        </Tabs>
+      </div>
+  )
 
+
+  }
 export default Profile;

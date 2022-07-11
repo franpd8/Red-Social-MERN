@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { logout, reset } from "../../features/auth/authSlice";
+import { getUserInfo, logout, reset } from "../../features/auth/authSlice";
 import { notification, Input } from "antd";
-import Home from "../Home/Home";
 
 
 const Header = () => {
-  const { user, message, isSuccessLogOut } = useSelector((state) => state.auth);
+  const { user,userData, message, isSuccessLogOut } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const openNotification = (type, messageTitle, placement) => {
@@ -25,6 +24,7 @@ const Header = () => {
       navigate("/login");
     }
     dispatch(reset());
+    dispatch(getUserInfo())
   }, [isSuccessLogOut]);
 
   const onLogout = (e) => {
@@ -50,7 +50,7 @@ const Header = () => {
               </Link>
             </div>
             <div className="header-link" >
-              <Link to="/profile">{user.user.name}'s Profile </Link>{" "}
+              <Link to="/profile">{userData.name}'s Profile </Link>{" "}
             </div>
           </>
         ) : (

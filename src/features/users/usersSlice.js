@@ -73,7 +73,7 @@ export const updateUser = createAsyncThunk("users/updateUser", async (userBody,t
   
 
 export const usersSlice = createSlice({
-  name: "userss",
+  name: "users",
   initialState,
   reducers: {
     reset: (state) => {
