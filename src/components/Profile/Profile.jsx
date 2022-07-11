@@ -24,7 +24,7 @@ const Profile = () => {
   const loadSys = async() => {
     window.scrollTo(0, 0);
     await getAllUserInfoAndReset();
-    setLoad(true)
+     setLoad(true)
   }
 
   useEffect(() => {
@@ -53,9 +53,13 @@ const Profile = () => {
 
   return (
     !load?
-      <div className="profile">
-        <h1>Loading User Details...</h1>
-      </div>
+    <div className="users">
+    <div className="usersLoader">
+    <img src="https://i.imgur.com/WfjoPpa.gif"/>
+   </div> </div>
+
+
+
       :
         <div className="profile">
           <Bio className="bio" userData={userData}/>

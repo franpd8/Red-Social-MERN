@@ -24,11 +24,11 @@ function UserPosts({ userData }) {
               src={post.img}
             />
           </div>
-          <div className="postTitle"> {post.title}</div>
+          {/* <div className="postTitle"> {post.title}</div> */}
         </Link>
       </div>
     );
-  });
+  }).reverse();
   return <div className="userPosts">{posts}</div>;
 }
 

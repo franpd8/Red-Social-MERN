@@ -28,76 +28,7 @@
   }
 }
 
-.users {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  margin: 0 auto; 
 
-
-  .users__all {
-    display: flex;
-    flex-wrap: wrap;
-
-    .user {
-      margin: 2em auto ;
-      // width: 33.3%;
-      // aspect-ratio: 1/1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      text-align: center;
-      padding: 2em;
-      border: 1px solid rgb(203, 200, 200);
-      border-radius: 5px;
-      background-color: rgb(251, 251, 251);
-      .userName {
-        color: black;
-        font-size:16px;
-        margin: 0.5em;
-      }
-      .userAvatar {
-        border-radius: 100%;
-    width: 12vw;
-    margin: 1em auto ;
-    text-align: center;
-        .userImg {
-          border-radius: 100%;
-      width: 10vw;
-      margin: 0 auto;
-        }
-      }
-      .userStats {
-        display: flex;
-        justify-content: center;
-        div {
-          margin: 0.5em;
-        }
-      }
-    }
-    .userBtn{
-      margin: 0 0 0.5em;
-      .btn{
-        margin-left:1vw;
-        border-radius:30px;
-        border: 1px solid black;
-        padding:0.3em 1.2em;
-        font-size:18px;
-        color:black;
-        background-color: white;
-        width:200px;
-      }
-      .btn:hover{
-        background-color: black;
-        color:white;
-      }
-    }
-  }
-}
-
-.userDetail {
-  border: 20px solid pink;
-}
 .postDetail {
   border: 20px solid blue;
 }

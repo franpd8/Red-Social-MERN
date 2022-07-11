@@ -10,6 +10,7 @@ import Search from "./components/Search/Search";
 import Users from "./components/Users/Users";
 import UserDetail from "./components/Users/User/UserDetail.jsx/UserDetail";
 import Posts from "./components/Home/Posts/Posts";
+import PrivateZone from "./guards/PrivateZone";
 
 function App() {
   return (
@@ -17,17 +18,23 @@ function App() {
       <BrowserRouter>
 
         <Header />
-<div className="margin">
+        <Routes>
+        <Route path="/login" element={<Login />} />
+        </Routes>
+        <div className="margin">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
+         
           <Route path="/register" element={<Register />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<PrivateZone>
+                <Profile />
+              </PrivateZone>} />
           <Route path="/posts" element={<Posts />} />
           <Route path="/post/:id" element={<PostDetail />} />
           <Route path="/user/:id" element={<UserDetail />} />
           <Route path="/search/posts/:title" element={<Search />} />
           <Route path="/users" element={<Users />} />
+          
 
         </Routes>
         </div>

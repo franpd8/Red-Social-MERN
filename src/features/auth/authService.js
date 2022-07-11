@@ -11,6 +11,7 @@ const login = async(userData)=>{
     const res = await axios.post(API_URL + '/users/login',userData)
     if (res.data) {
         localStorage.setItem("user", JSON.stringify(res.data));
+
       }
     return res.data
 }
@@ -31,10 +32,16 @@ const logout = async () => {
   }; 
   const getUserInfo = async()=>{
     const user = JSON.parse(localStorage.getItem("user"));
+   
     const res = await axios.get(API_URL + '/users/info',{
       headers: {
         authorization: user?.token,
       }})
+
+      if (res.data) {
+        localStorage.setItem("userData", JSON.stringify(res.data));
+        
+      } 
     return res.data
 }
 

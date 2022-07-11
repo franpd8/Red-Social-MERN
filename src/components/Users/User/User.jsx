@@ -7,6 +7,7 @@ import {
   unFollowUser,
 } from "../../../features/users/usersSlice";
 import { notification } from "antd";
+import "./../Users.scss"
 
 const User = () => {
   const { users, isError, isSuccess, message, isFollowing, isUnFollowing } =
@@ -46,42 +47,57 @@ const User = () => {
     dispatch(reset());
   }, [isError, isSuccess, isFollowing, isUnFollowing]);
 
-
   const user = users.map((userdata) => {
     const userId = userdata._id;
-    const avatar = userdata.avatar
+    const avatar = userdata.avatar;
 
     const userFollowers = userdata.followers?.map((user) => user._id);
     const loggedUserId = userData._id;
     let imFollowing = userFollowers.includes(loggedUserId);
-    console.log("¿le sigo?", imFollowing)
-  
-
-
+    console.log("¿le sigo?", imFollowing);
+    
+   
     return (
       <div className="user" key={userdata._id}>
         <Link to={"/user/" + userdata._id}>
-        <div className="userAvatar">
-          <img className="userImg" src={avatar?avatar:"https://i.imgur.com/Svw4Sam.png"}/></div>
+          <div className="userAvatar">
+            <img
+              className="userImg"
+              src={avatar ? avatar : "https://i.imgur.com/Svw4Sam.png"}
+            />
+          </div>
           <div className="userName">{userdata.name}</div>
         </Link>
 
-<div className="userStats">
-        <div className="userFollowers">{userdata.followers.length} Followers</div>
-        <div className="userFollowing">{userdata.following.length}  Following</div>
+        <div className="userStats">
+          <div className="userFollowers">
+            <span className="userName">{userdata.followers.length} </span>
+            Followers
+          </div>
+          <div className="userFollowing">
+            <span className="userName">{userdata.following.length} </span>{" "}
+            Following
+          </div>
         </div>
         <div className="userBtn">
-        {imFollowing ? (
-          <button className="btn" onClick={() => unFollowAndReset(userdata._id)}>
-            Unfollow
-          </button>
-        ) : (
-          <button  className="btn" onClick={() => FollowAndReset(userdata._id)}>Follow</button>
-        )}
+          {imFollowing ? (
+            <button
+              className="btn"
+              id="button"
+              onClick={() => unFollowAndReset(userdata._id)}
+            >
+              Unfollow
+            </button>
+          ) : (
+            <button
+              className="btn"id="button"
+              onClick={() => FollowAndReset(userdata._id)}
+            >
+              Follow
+            </button>
+          )}
         </div>
       </div>
-
-      
     );
   });
   return <div className="users__all">{user}</div>;

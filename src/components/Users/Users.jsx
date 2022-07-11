@@ -5,7 +5,7 @@ import { getAllUsers, reset } from '../../features/users/usersSlice';
 import User from './User/User';
 import { Avatar, List, Skeleton, Switch } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
-
+import "./Users.scss"
 const Users = () => {
 const { isLoading } = useSelector((state) => state.users);
   const dispatch = useDispatch();
@@ -14,6 +14,8 @@ const { isLoading } = useSelector((state) => state.users);
     await dispatch(getAllUsers())
     await dispatch(getUserInfo());
     dispatch(reset())
+
+  
   };
 
   useEffect(() => {
@@ -22,21 +24,9 @@ const { isLoading } = useSelector((state) => state.users);
 
   if (isLoading) {
     return<div className="users"> 
-    <LoadingOutlined
-    style={{
-      fontSize: 24,
-    }}
-    spin
-  />
-    <Skeleton.Image />
-<Skeleton
-    avatar
-    paragraph
-  />
-  
-
-  
-    </div>
+   <div className="usersLoader">
+     <img src="https://i.imgur.com/WfjoPpa.gif"/>
+    </div> </div>
   }
 
   return (

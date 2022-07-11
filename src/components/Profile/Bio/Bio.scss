@@ -121,3 +121,22 @@
 .userProfile .userProfile__info div{
     padding:0;
 }
+
+.users {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 0 auto; 
+    height:40vh;
+  .usersLoader{
+      position:relative;
+      top:50%;
+      transform:translateY(50%);
+      margin: 0 auto;
+    .img{
+        width:50%;
+        height:auto;
+    }
+}
+}
+

@@ -1,3 +1,4 @@
+import { useLocation} from"react-router"
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -6,6 +7,7 @@ import { notification, Input } from "antd";
 
 
 const Header = () => {
+  const {pathname} = useLocation()
   const { user,userData, message, isSuccessLogOut } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -21,15 +23,17 @@ const Header = () => {
   useEffect(() => {
     if (isSuccessLogOut) {
       openNotification("success","Log out Succesfully :)","top")
-      navigate("/login");
-    }
+    }   
     dispatch(reset());
-    dispatch(getUserInfo())
   }, [isSuccessLogOut]);
 
   const onLogout = (e) => {
     dispatch(logout());
   };
+
+if(pathname == "/login"){
+  return null }
+
 
   return (
     <div className="header">
@@ -47,7 +51,7 @@ const Header = () => {
               <Link to="/profile">{userData.name}'s Profile </Link>{" "}
             </div>
             <div className="header-link" >
-              <Link to="/" onClick={onLogout}>
+              <Link to="/login" onClick={onLogout}>
                 Logout
               </Link>
             </div>

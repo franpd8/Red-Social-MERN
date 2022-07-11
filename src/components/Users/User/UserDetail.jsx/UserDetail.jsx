@@ -12,11 +12,11 @@ import { Tabs } from "antd";
 import Following from "../../../Profile/Following/Following";
 import Follower from "../../../Profile/Follower/Follower";
 import UserPosts from "../../../Profile/UserPosts/UserPosts";
+import "./../../Users.scss"
 const { TabPane } = Tabs;
 
 const UserDetail = () => {
   const {
-    isLoading,
     isError,
     isSuccess,
     message,
@@ -42,7 +42,7 @@ const UserDetail = () => {
     window.scrollTo(0, 0);
     await dispatch(getUserById(id));
     await dispatch(getUserInfo());
-    setLoad(true)
+     setLoad(true)
   }
   useEffect(() => {
     loadSys()
@@ -72,9 +72,11 @@ const UserDetail = () => {
  
   return (
     !load?  
-      
+      <div className="users">
     <div className="userDetail">
-          <h1>Loading user...</h1>
+    <div className="usersLoader">
+    <img src="https://i.imgur.com/WfjoPpa.gif"/>
+   </div> </div>
        </div> 
   : 
        <div className="userDetail">
@@ -83,13 +85,13 @@ const UserDetail = () => {
          />
          <Tabs defaultActiveKey="1" centered>
               <TabPane tab="Posts" key="1">
-            <UserPosts userData={userData} />
+            <UserPosts userData={userDetails} />
           </TabPane>
           <TabPane tab="Following" key="2">
-            <Following userData={userData} />
+            <Following userData={userDetails} />
           </TabPane>
           <TabPane tab="Followers" key="3">
-            <Follower userData={userData} />
+            <Follower userData={userDetails} />
           </TabPane>
         </Tabs>
        </div>

@@ -3,8 +3,9 @@ import Login from "./../../components/Login/Login";
 import Posts from "./Posts/Posts";
 import SearchPost from "./Posts/SearchPost/SearchPost";
 import { BackTop } from "antd";
-import React from "react";
+import React, { useEffect } from "react";
 import { UpSquareFilled } from '@ant-design/icons';
+
 
 const style = {
   height: 60,
@@ -19,22 +20,24 @@ const style = {
 
 const Home = () => {
   const user = JSON.parse(localStorage.getItem("user"));
-
   <div
     style={{
       height: "600vh",
       padding: 16,
     }}
   ></div>;
+
+
+
+
+
   return (
     <div className="home">
       
       {user?<><AddPost />
       <h1>Home</h1>
       <SearchPost />
-      <h2>Here will display all Posts</h2>
       <Posts /> </> : <Login/> }
-    
       <BackTop>
         <div style={style}><UpSquareFilled  style={{ fontSize: 32 + "px" }} /></div>
       </BackTop>

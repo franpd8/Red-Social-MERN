@@ -1,21 +1,45 @@
-import { useEffect, useState } from "react";
+import { useLocation} from"react-router"
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { login, reset } from "../../features/auth/authSlice";
+import {  useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+
+
+import { getUserInfo, login, reset } from "../../features/auth/authSlice";
 import { notification } from "antd";
 import { Button, Form, Input } from "antd";
 
 const Login = () => {
+  const {pathname} = useLocation()
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isError, isSuccess, message } = useSelector((state) => state.auth);
-  const onFinish = (values) => {
+  useEffect(() => {
+    if (isError) {
+      openNotification("error", "Éxito :(", "top");
+    }
+    if (isSuccess) {
+      openNotification("success", "Éxito :)", "top");
+      navigate("/profile");
+      dispatch(getUserInfo());
+    }
+    dispatch(reset());
+  }, [isError, isSuccess, message]);
+
+// if(pathname == "/login"){
+// return null }
+  
+
+  const onFinish =  (values) => {
     console.log("Success:", values);
-    dispatch(login(values));
+     dispatch(login(values));
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+
+
+
+
   const openNotification = (type, messageTitle, placement) => {
     notification[type]({
       className: "notification-class",
@@ -24,18 +48,7 @@ const Login = () => {
       placement,
     });
   };
-  useEffect(() => {
-    if (isError) {
-      openNotification("error", "Éxito :(", "top");
-    }
-    if (isSuccess) {
-      openNotification("success", "Éxito :)", "top");
-      navigate("/profile");
-    }
-
-    dispatch(reset());
-  }, [isError, isSuccess, message]);
-
+  
   return (
     <Form
       name="login"
