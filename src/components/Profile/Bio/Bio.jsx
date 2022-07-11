@@ -16,7 +16,9 @@ const [edit,setEdit] = useState(initialValue);
  const header = userData.header
  const dispatch = useDispatch();
  const FollowAndReset = (id) => {
+
     dispatch(followUser(id));
+ 
     dispatch(reset());
   };
   const unFollowAndReset = (id) => {
@@ -39,7 +41,7 @@ const [edit,setEdit] = useState(initialValue);
         </button>  
     </> 
     : 
-    <> {console.log("de verdad lo sigo?",imFollowing)}
+    <> 
     {imFollowing ? <> 
         <button className="settingsBtn"><EllipsisOutlined /></button><button className="DMbtn" >
         <MailOutlined />

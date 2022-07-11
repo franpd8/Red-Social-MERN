@@ -13,7 +13,6 @@ import { reset } from "../../features/users/usersSlice";
 const { TabPane } = Tabs;
 
 const Profile = () => {
-  
   const { userData} = useSelector((state) => state.auth);
   const { users,isError, isSuccess, message} = useSelector((state) => state.users);
   const [load, setLoad] = useState(false)

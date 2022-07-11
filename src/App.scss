@@ -1,110 +1,149 @@
 @import "antd/dist/antd.css";
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-
-.margin{
-  margin-left:25vw
-  
+.margin {
+  margin-left: 25vw;
 }
-.home{
-  border:2px solid black;
+.home {
+  border: 2px solid black;
   background-color: beige;
-  
 }
-.home__posts{
-  border:2px solid red;
+.home__posts {
+  border: 2px solid red;
   background-color: azure;
-  padding:2em;
+  padding: 2em;
 }
-.home__posts__all{
+.home__posts__all {
   border: 2px solid blue;
   background-color: aquamarine;
   padding: 1em;
-  display:flex;
-  flex-wrap:wrap;
-  .post{
+  display: flex;
+  flex-wrap: wrap;
+  .post {
     border: 2px dotted white;
     background-color: burlywood;
-    margin: 1em 0 ;
+    margin: 1em 0;
     width: 50%;
-    
   }
 }
 
-.users{
-
-  display:flex;
+.users {
+  display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  border:solid 8px rgb(65, 172, 35);
-  background-color: aquamarine;
-  .users__all{
-  
-    display:flex;
+  margin: 0 auto; 
+
+
+  .users__all {
+    display: flex;
     flex-wrap: wrap;
-    border:solid 8px rgb(65, 172, 35);
-    background-color: rgb(173, 180, 37);
-    .user{
-      border:6px solid purple;
-      background-color: bisque;
-      width: 33.3%;
-      padding:1em;
-  
-    }}
 
+    .user {
+      margin: 2em auto ;
+      // width: 33.3%;
+      // aspect-ratio: 1/1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      padding: 2em;
+      border: 1px solid rgb(203, 200, 200);
+      border-radius: 5px;
+      background-color: rgb(251, 251, 251);
+      .userName {
+        color: black;
+        font-size:16px;
+        margin: 0.5em;
+      }
+      .userAvatar {
+        border-radius: 100%;
+    width: 12vw;
+    margin: 1em auto ;
+    text-align: center;
+        .userImg {
+          border-radius: 100%;
+      width: 10vw;
+      margin: 0 auto;
+        }
+      }
+      .userStats {
+        display: flex;
+        justify-content: center;
+        div {
+          margin: 0.5em;
+        }
+      }
+    }
+    .userBtn{
+      margin: 0 0 0.5em;
+      .btn{
+        margin-left:1vw;
+        border-radius:30px;
+        border: 1px solid black;
+        padding:0.3em 1.2em;
+        font-size:18px;
+        color:black;
+        background-color: white;
+        width:200px;
+      }
+      .btn:hover{
+        background-color: black;
+        color:white;
+      }
+    }
+  }
 }
 
-
-.userDetail{
-  border:20px solid pink;
-  
+.userDetail {
+  border: 20px solid pink;
 }
-.postDetail{
-  
-  border:20px solid blue;
+.postDetail {
+  border: 20px solid blue;
 }
 
 // SINGLE COMPONENTS
-.following,.follower{
-  .following__box,.follower__box{
-    display:flex;
-    flex-wrap:wrap;
+.following,
+.follower {
+  .following__box,
+  .follower__box {
+    display: flex;
+    flex-wrap: wrap;
   }
 }
-.following__user,.follower__user{
-  margin:3em auto ;
+.following__user,
+.follower__user {
+  margin: 3em auto;
   border: 1px solid rgb(203, 200, 200);
-  border-radius:5px;
+  border-radius: 5px;
   background-color: rgb(251, 251, 251);
 
- 
-  .userImg{
+  .userImg {
     border-radius: 100%;
-    width:18vw;
-    margin:1em;
+    width: 18vw;
+    margin: 1em;
     text-align: center;
-  .img{
-    border-radius:100%;
-    width:15vw;
-    margin:0 auto; 
+    .img {
+      border-radius: 100%;
+      width: 15vw;
+      margin: 0 auto;
+    }
   }
-  }
-  .userName{
+  .userName {
     text-align: center;
-    color:black;
+    color: black;
     font-weight: 600;
-    margin-bottom:1em;
+    margin-bottom: 1em;
   }
 }
 
-.bio{
+.bio {
   border: 1px solid purple;
 }
-// ----- Users Posts ---- 
-.userPosts{
-  display:flex;
-  flex-wrap:wrap;
+// ----- Users Posts ----
+.userPosts {
+  display: flex;
+  flex-wrap: wrap;
 }
 // .userPosts__post{
 //   border:10px solid white;
@@ -112,70 +151,63 @@
 // ;
 // }
 
-
-.header{
-  border:2px solid red;
-  width:25vw;
-  height:100%;
-  position:fixed;
-  padding-left:1em;
-  display:flex;
+.header {
+  border: 2px solid red;
+  width: 25vw;
+  height: 100%;
+  position: fixed;
+  padding-left: 1em;
+  display: flex;
   justify-content: flex-end;
-  .header-box{
-    border:2px solid blue;
-    height:100%;
-    width:18vw;
-   
+  .header-box {
+    border: 2px solid blue;
+    height: 100%;
+    width: 18vw;
 
     height: 80vh;
     div.header-link {
-      margin: 2em 0 ;
-      border:2px solid green;
+      margin: 2em 0;
+      border: 2px solid green;
       background-color: aquamarine;
-      
+
       a {
         margin: 2em;
-        border:2px solid purple;
-         }
+        border: 2px solid purple;
+      }
     }
-   
   }
-  
 }
 
-
-
-
-.notification-class{
-  width:600px;
+.notification-class {
+  width: 600px;
   background-color: aqua;
-  color:red;
+  color: red;
   border: 2px solid yellow;
 }
-.searchBar{
-  width:600px;
+.searchBar {
+  width: 600px;
   background-color: aqua;
-  color:red;
+  color: red;
   border: 2px solid yellow;
 }
 
-.post__img{
-  width:300px;
-  height:auto
+.post__img {
+  width: 300px;
+  height: auto;
 }
-.smallIcon__img{
-  width:48px;
-  height:auto;
+.smallIcon__img {
+  width: 48px;
+  height: auto;
 }
 
 // override ant-d styles
 
 // ** TAB COLOR
-.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn{
-  color:black;
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: black;
 }
 // ** TAB BORDER-BOTTOM
 .ant-tabs-ink-bar {
   height: 5px;
-  background: black ;
+  background: black;
 }

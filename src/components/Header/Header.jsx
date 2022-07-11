@@ -43,14 +43,13 @@ const Header = () => {
       <div className="header-link" >
         <Link  to="/users">userlist</Link>
       </div>
-
+            <div className="header-link" >
+              <Link to="/profile">{userData.name}'s Profile </Link>{" "}
+            </div>
             <div className="header-link" >
               <Link to="/" onClick={onLogout}>
                 Logout
               </Link>
-            </div>
-            <div className="header-link" >
-              <Link to="/profile">{userData.name}'s Profile </Link>{" "}
             </div>
           </>
         ) : (

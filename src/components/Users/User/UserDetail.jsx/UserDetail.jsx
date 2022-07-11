@@ -29,21 +29,13 @@ const UserDetail = () => {
   const dispatch = useDispatch();
   const [load, setLoad] = useState(false)
 
-  const imFollowed = false
-  const imFollowing = false
+  let imFollowing
   if(load){
-    console.log("ha cargado load?",load)
-    // list of people the user is following
-    const userId = userDetails._id;
-    const userFollowing = userDetails?.following?.map((user) => user._id);
-    const loggedUser = userData;
-    // list of people the logged user is following
+
+    // list of people the user has as followers
+    const userFollowers = userDetails?.followers?.map((user) => user._id);
     const loggedUserId = userData._id;
-    const loggedUserFollowing = loggedUser.following?.map((user) => user._id);
-    const imFollowed = userFollowing.includes(loggedUserId);
-    console.log("me sigue?",imFollowed)
-    const imFollowing = loggedUserFollowing.includes(userId);
-    console.log("sigo?",imFollowing)
+    imFollowing = userFollowers.includes(loggedUserId);
   }
   
   const loadSys = async() => {
@@ -87,7 +79,6 @@ const UserDetail = () => {
   : 
        <div className="userDetail">
          <Bio userData={userDetails} 
-         imFollowed={imFollowed} 
          imFollowing={imFollowing} 
          />
          <Tabs defaultActiveKey="1" centered>

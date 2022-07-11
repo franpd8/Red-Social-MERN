@@ -45,33 +45,43 @@ const User = () => {
     }
     dispatch(reset());
   }, [isError, isSuccess, isFollowing, isUnFollowing]);
-  // list of people the logged user is following
-  const loggedUserFollowing = userData.following?.map((user) => user._id);
+
+
   const user = users.map((userdata) => {
     const userId = userdata._id;
-    //  check if you are following the user
-    const imFollowing = loggedUserFollowing.includes(userId);
     const avatar = userdata.avatar
+
+    const userFollowers = userdata.followers?.map((user) => user._id);
+    const loggedUserId = userData._id;
+    let imFollowing = userFollowers.includes(loggedUserId);
+    console.log("¿le sigo?", imFollowing)
+  
 
 
     return (
       <div className="user" key={userdata._id}>
-        A single user
         <Link to={"/user/" + userdata._id}>
-          <p>Name: {userdata.name}</p>
-          <img className="smallIcon__img" src={avatar?avatar:"https://i.imgur.com/Svw4Sam.png"}/>
+        <div className="userAvatar">
+          <img className="userImg" src={avatar?avatar:"https://i.imgur.com/Svw4Sam.png"}/></div>
+          <div className="userName">{userdata.name}</div>
         </Link>
+
+<div className="userStats">
+        <div className="userFollowers">{userdata.followers.length} Followers</div>
+        <div className="userFollowing">{userdata.following.length}  Following</div>
+        </div>
+        <div className="userBtn">
         {imFollowing ? (
-          <button onClick={() => unFollowAndReset(userdata._id)}>
+          <button className="btn" onClick={() => unFollowAndReset(userdata._id)}>
             Unfollow
           </button>
         ) : (
-          <button onClick={() => FollowAndReset(userdata._id)}>Follow</button>
+          <button  className="btn" onClick={() => FollowAndReset(userdata._id)}>Follow</button>
         )}
-        <p>DM</p>
-        <p> Followers: {userdata.followers.length}</p>
-        <p> Following: {userdata.following.length}</p>
+        </div>
       </div>
+
+      
     );
   });
   return <div className="users__all">{user}</div>;

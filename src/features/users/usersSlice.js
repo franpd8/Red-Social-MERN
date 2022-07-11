@@ -111,6 +111,7 @@ export const usersSlice = createSlice({
         if (user._id === action.payload.userFollowed._id) {
           user = action.payload.userFollowed;
         }
+
         if (user._id === action.payload.userLogged._id) {
           user = action.payload.userLogged;
         }
@@ -118,6 +119,7 @@ export const usersSlice = createSlice({
       });
       state.message = action.payload.message;
       state.users = users;
+      state.userDetails = action.payload.userFollowed
       state.isFollowing = true;
     })
     .addCase(followUser.rejected, (state, action) => {
@@ -138,6 +140,7 @@ export const usersSlice = createSlice({
       });
       state.message = action.payload.message;
       state.users = users;
+      state.userDetails = action.payload.userUnfollowed
       state.isUnFollowing = true;
       state.isSuccess = true;
     })
