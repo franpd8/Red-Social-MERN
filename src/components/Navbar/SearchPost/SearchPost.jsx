@@ -1,21 +1,21 @@
 import React from 'react'
 import { Input } from "antd";
 import { useNavigate } from "react-router-dom";
+import "./../Navbar.scss"
 const { Search } = Input;
-const SearchUser = () => {
+const SearchPost = () => {
     const navigate = useNavigate();
     const onSearch = (value) => {
-        navigate("/search/users/" + value);
+        navigate("/search/posts/" + value);
       };
   return (
     <div><Search
-    placeholder="Search for an user"
+    placeholder="Search for a post"
     className="searchBar"
-    allowClear
     onSearch={onSearch}
     enterButton
   /></div>
   )
 }
 
-export default SearchUser
+export default SearchPost

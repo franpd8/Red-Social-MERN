@@ -1,0 +1,45 @@
+.navbar{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+
+    margin-top:-3em;
+
+    width: 100vw;
+    padding:0 4em 1.2em;
+    position: fixed;
+
+
+.logo{
+    display:flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 7.5em;
+    .logoApp{
+        height:32px;
+        margin: 0 16px;
+    }
+    .logoName{
+        font-family: 'Edu VIC WA NT Beginner', cursive;
+        font-size: 32px;
+    }
+}
+
+.searchBar {
+    width: 30vw;
+    margin-top:1.2em;
+
+    .ant-input {
+        border-radius: 6px 0px 0px 6px;
+      }
+      .ant-btn{
+        border-radius: 0px 6px 6px 0px !important;
+        background-color: black;
+
+      }
+    
+  }
+
+}

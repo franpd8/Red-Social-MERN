@@ -1,6 +1,6 @@
 import AddPost from "./AddPost/AddPost";
 import Posts from "./Posts/Posts";
-import SearchPost from "./Posts/SearchPost/SearchPost";
+import SearchPost from "../Navbar/SearchPost/SearchPost";
 import { BackTop } from "antd";
 import React, { useEffect } from "react";
 import { UpSquareFilled } from '@ant-design/icons';
@@ -34,9 +34,6 @@ const Home = () => {
     <div className="home">
       
       {user?<>
-      <div className="postButton"><AddPost /></div>
-      <h1>Home</h1>
-      <SearchPost />
       <Posts /> </> :null }
       <BackTop>
         <div style={style}><UpSquareFilled  style={{ fontSize: 32 + "px" }} /></div>

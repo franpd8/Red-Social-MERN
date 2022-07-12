@@ -1,0 +1,105 @@
+
+.header {
+    width: 25vw;
+    height: 100%;
+    position: fixed;
+  
+
+    .header-box {
+      margin: 0 auto; 
+      height: 100%;
+      width: 18vw;
+      height: 80vh;
+    
+        .userInfo {
+          padding: 1em;
+          margin:2em 0 ;
+          border-radius:8px;
+          border: 1px solid darkgray;
+          background-color: #f6f9f9;
+          .userDescription{
+              display:flex;
+
+          .userAvatar {
+            margin-left: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 5vw;
+            height: 5vw;
+            border-radius: 100%;
+            img {
+              width: 4vw;
+              height: 4vw;
+              border-radius: 100%;
+            }
+          }
+          .userRefs {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-left: 3px;
+          }
+        }
+        .userStats{
+            display:flex;
+           justify-content: center;
+           margin-left:2em;
+           
+          
+            .userStat{
+                display:flex;
+                flex-direction: column;
+                text-align: center;
+                margin-right:2em;
+                .value{
+                    font-weight: 700;
+                }
+            }
+        }
+      }
+  
+      .headerNav{
+        border-radius:8px;
+        border: 1px solid darkgray;
+        background-color: #f6f9f9;
+        padding:2em 0 ;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height:20vw;
+        
+      }
+      .header-link {
+        display:flex;
+      }
+      .selected{
+        box-shadow: -2px 0px 0px -0.2px rgba(0,0,0,1);
+        border-left: 1px solid black;
+         a{
+           color:black;
+           font-weight: 700;
+         }
+  
+        .header-icon{
+          color:black;
+        }
+      }
+      a {
+        margin: 0 2em ;
+        display:flex;
+       align-items: center;
+       color:rgb(61, 60, 60);
+       font-weight: 500;
+  
+  
+        .header-icon{
+          font-size:20px;
+          color:rgb(61, 60, 60);
+          margin-right:16px;
+        }
+        
+      }
+    }
+  }
+  

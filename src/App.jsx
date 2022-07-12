@@ -11,6 +11,7 @@ import Users from "./components/Users/Users";
 import UserDetail from "./components/Users/User/UserDetail.jsx/UserDetail";
 import Posts from "./components/Home/Posts/Posts";
 import PrivateZone from "./guards/PrivateZone";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             path="/"
             element={
               <PrivateZone>
+                <Navbar/>
                 <Header />
                 <div className="margin">
                   <Home />
@@ -38,6 +40,7 @@ function App() {
             path="/profile"
             element={
               <PrivateZone>
+                 <Navbar/>
                 <Header />
                 <div className="margin">
                   <Profile />
@@ -48,7 +51,8 @@ function App() {
           <Route
             path="/posts"
             element={
-              <>
+              <> 
+              <Navbar/>
                 <Header />
                 <div className="margin">
                   <Posts />
@@ -60,6 +64,7 @@ function App() {
             path="/post/:id"
             element={
               <>
+               <Navbar/>
                 <Header />
                 <div className="margin">
                   <PostDetail />
@@ -71,6 +76,7 @@ function App() {
             path="/user/:id"
             element={
               <>
+               <Navbar/>
                 <Header />
                 <div className="margin">
                   <UserDetail />
@@ -82,6 +88,7 @@ function App() {
             path="/search/posts/:title"
             element={
               <>
+               <Navbar/>
                 <Header />
                 <div className="margin">
                   <Search />
@@ -93,6 +100,7 @@ function App() {
             path="/users"
             element={
               <>
+               <Navbar/>
                 <Header />
                 <div className="margin">
                   <Users />

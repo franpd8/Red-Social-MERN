@@ -69,16 +69,23 @@ const User = () => {
           <div className="userName">{userdata.name}</div>
         </Link>
 
-        <div className="userStats">
-          <div className="userFollowers">
-            <span className="userName">{userdata.followers.length} </span>
-            Followers
-          </div>
-          <div className="userFollowing">
-            <span className="userName">{userdata.following.length} </span>{" "}
-            Following
-          </div>
-        </div>
+{/*  */}
+        <div class="userStats">
+                  <div class="userStat">
+                    <span class="value">{userdata.postIds.length}</span>
+                    Posts
+                  </div>
+                  <div class="userStat">
+                    <span class="value">{userdata.followers.length}</span>
+                    Followers
+                  </div>
+                  <div class="userStat">
+                    <span class="value">{userdata.following.length} </span>{" "}
+                    Following
+                  </div>
+                </div>
+
+
         <div className="userBtn">
           {imFollowing ? (
             <button

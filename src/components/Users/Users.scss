@@ -60,6 +60,23 @@
           div {
             margin: 1em 0.5em;
           }
+
+        }
+        .userStats{
+            display:flex;
+           justify-content: center;
+           margin-left:1em;
+           
+            .userStat{
+                display:flex;
+                flex-direction: column;
+                text-align: center;
+         
+                .value{
+                    font-weight: 700;
+                    font-size:16px;
+                }
+            }
         }
       }
       .userBtn{
@@ -81,3 +98,6 @@
       }
     }
   }
+
+
+  

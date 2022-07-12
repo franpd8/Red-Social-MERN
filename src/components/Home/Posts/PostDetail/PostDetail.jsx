@@ -57,7 +57,8 @@ const PostDetail = () => {
         </div>
       </div>
       <div className="postDescription">
-      <p>{post.body}</p>
+      <p className="postTitle">{post.title}</p>
+      <p className="postBody">{post.body}</p>
       </div>
       </div>
        </div>
