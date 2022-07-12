@@ -1,14 +1,17 @@
-import { useLocation} from"react-router"
+import { useLocation } from "react-router";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { getUserInfo, logout, reset } from "../../features/auth/authSlice";
 import { notification, Input } from "antd";
-
+import AddPost from "../Home/AddPost/AddPost";
+import { HomeOutlined,SearchOutlined ,UserOutlined, UploadOutlined,LogoutOutlined} from "@ant-design/icons";
 
 const Header = () => {
-  const {pathname} = useLocation()
-  const { user,userData, message, isSuccessLogOut } = useSelector((state) => state.auth);
+  const { pathname } = useLocation();
+  const { user, userData, message, isSuccessLogOut } = useSelector(
+    (state) => state.auth
+  );
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const openNotification = (type, messageTitle, placement) => {
@@ -19,50 +22,69 @@ const Header = () => {
       placement,
     });
   };
-  
+
   useEffect(() => {
     if (isSuccessLogOut) {
-     
-    }   
-    
+    }
   }, [isSuccessLogOut]);
 
   const onLogout = (e) => {
-    openNotification("success","Log out Succesfully :)","top")
+    openNotification("success", "Log out Succesfully :)", "top");
     setTimeout(() => {
       dispatch(logout());
     }, 2000);
-
   };
 
-// if(pathname == "/login"){
-//   return null }
-
+  // if(pathname == "/login"){
+  //   return null }
 
   return (
     <div className="header">
-    <nav className="header-box">
-      <div>
-        {user ? (
-          <>
-          <div className="header-link" >
-        <Link   to="/">home</Link>
-      </div>
-      <div className="header-link" >
-        <Link  to="/users">userlist</Link>
-      </div>
-            <div className="header-link" >
-              <Link to="/profile">{userData.name}'s Profile </Link>{" "}
-            </div>
-            <div className="header-link" >
-              <Link to="/login" onClick={onLogout}>
-                Logout
-              </Link>
-            </div>
-          </>
-        ) : <>hola</>}
-      </div>
-    </nav>
+      <nav className="header-box">
+        <div>
+          {user ? (
+            <>
+              <div className="userInfo">
+                <div className="userAvatar">
+                  <img src={userData.avatar} />
+                </div>
+                <div className="userRefs">
+                  <div className="userName">{userData.name}</div>
+                  <div className="userAlias">{"@" + userData.alias}</div>
+                </div>
+              </div>
+              <div className="headerNav">
+                <div className={pathname == "/"? "header-link selected" : "header-link"}>
+                  <Link to="/">
+                    {" "}
+                    <div className="header-icon">
+                    <HomeOutlined /></div> Home
+                  </Link>
+                </div>
+                <div className={pathname == "/users"? "header-link selected" : "header-link"}>
+                  <Link to="/users">
+                  <div className="header-icon"><SearchOutlined /></div>People</Link>
+                </div>
+                <div className={pathname == "/profile"? "header-link selected" : "header-link"}>
+                  <Link to="/profile">
+                  <div className="header-icon"><UserOutlined /></div> Profile </Link>{" "}
+                </div>
+                <div className="header-link">
+                  <a>
+                <div className="header-icon"><UploadOutlined /></div> <AddPost /></a>
+                </div>
+                <div className="header-link">
+                  <Link to="/login" onClick={onLogout}>
+                  <div className="header-icon"><LogoutOutlined /></div>Logout
+                  </Link>
+                </div>
+              </div>
+            </>
+          ) : (
+            <>hola</>
+          )}
+        </div>
+      </nav>
     </div>
   );
 };

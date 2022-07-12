@@ -10,6 +10,7 @@ import { Tabs } from "antd";
 import Bio from "./Bio/Bio";
 import { notification } from "antd";
 import { reset } from "../../features/users/usersSlice";
+import AddPost from "../Home/AddPost/AddPost";
 const { TabPane } = Tabs;
 
 const Profile = () => {
@@ -63,6 +64,7 @@ const Profile = () => {
       :
         <div className="profile">
           <Bio className="bio" userData={userData}/>
+          <AddPost />
             <Tabs defaultActiveKey="1" centered>
               <TabPane tab="Posts" key="1">
             <UserPosts userData={userData} />

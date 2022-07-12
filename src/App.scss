@@ -87,20 +87,80 @@
   display: flex;
   justify-content: flex-end;
   .header-box {
-    border: 2px solid blue;
+    margin: 0 auto; 
     height: 100%;
     width: 18vw;
-
     height: 80vh;
-    div.header-link {
-      margin: 2em 0;
-      border: 2px solid green;
-      background-color: aquamarine;
+  
+      .userInfo {
+        display: flex;
+        padding: 1.5em 0;
+        margin:1.5em 0 ;
+        border-radius:8px;
+        border: 1px solid darkgray;
+        background-color: #f6f9f9;
+        .userAvatar {
+          margin-left: 24px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          width: 5vw;
+          height: 5vw;
+          border-radius: 100%;
+          img {
+            width: 4vw;
+            height: 4vw;
+            border-radius: 100%;
+          }
+        }
+        .userRefs {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          margin-left: 3px;
+        }
+    }
 
-      a {
-        margin: 2em;
-        border: 2px solid purple;
+    .headerNav{
+      border-radius:8px;
+      border: 1px solid darkgray;
+      background-color: #f6f9f9;
+      padding:2em 0 ;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height:20vw;
+      
+    }
+    .header-link {
+      display:flex;
+    }
+    .selected{
+      box-shadow: -4px 0px 0px -0.2px rgba(0,0,0,1);
+      border-left: 1px solid black;
+       a{
+         color:black;
+         font-weight: 700;
+       }
+
+      .header-icon{
+        color:black;
       }
+    }
+    a {
+      margin: 0 2em ;
+      display:flex;
+     align-items: center;
+     color:rgb(61, 60, 60);
+     font-weight: 500;
+
+
+      .header-icon{
+        font-size:20px;
+        color:rgb(61, 60, 60);
+        margin-right:16px;
+      }
+      
     }
   }
 }

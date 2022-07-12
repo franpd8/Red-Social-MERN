@@ -33,7 +33,8 @@ const Home = () => {
   return (
     <div className="home">
       
-      {user?<><AddPost />
+      {user?<>
+      <div className="postButton"><AddPost /></div>
       <h1>Home</h1>
       <SearchPost />
       <Posts /> </> :null }

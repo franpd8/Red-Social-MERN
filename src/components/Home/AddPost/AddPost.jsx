@@ -55,9 +55,9 @@ const AddPost = () => {
 
   return (
     <>
-      <Button type="primary" onClick={showModal}>
-        Open Modal
-      </Button>
+      <div onClick={showModal}>
+        Create Post
+      </div>
 <EditPost/>
       <Modal
         visible={visible}
