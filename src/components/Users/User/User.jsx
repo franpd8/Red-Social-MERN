@@ -36,13 +36,16 @@ const User = () => {
 
   useEffect(() => {
     if (isError) {
-      openNotification("error", "Error :(", "top");
+      openNotification("error", "Oops!", "top");
     }
     if (isSuccess) {
-      openNotification("success", "Éxito :)", "top");
+      openNotification("success", "Nice!", "top");
     }
     if (isFollowing) {
       openNotification("success", "Now following", "top");
+    }
+    if (isUnFollowing) {
+      openNotification("success", "Now unfollowing", "top");
     }
     dispatch(reset());
   }, [isError, isSuccess, isFollowing, isUnFollowing]);

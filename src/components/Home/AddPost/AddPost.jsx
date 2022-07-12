@@ -31,10 +31,10 @@ const AddPost = () => {
   };
   useEffect(() => {
     if (isError) {
-      openNotification("error", "Error :(", "top");
+      openNotification("error", "Oops!", "top");
     }
     if (isSuccess) {
-      openNotification("success", "Éxito :)", "top");
+      openNotification("success", "Nice!", "top");
     }
     dispatch(reset());
   }, [isError, isSuccess]);

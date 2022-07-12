@@ -15,10 +15,10 @@ const Login = () => {
   const { isError, isSuccess, message } = useSelector((state) => state.auth);
   useEffect(() => {
     if (isError) {
-      openNotification("error", "Éxito :(", "top");
+      openNotification("error", "Oops!", "top");
     }
     if (isSuccess) {
-      openNotification("success", "Éxito :)", "top");
+      openNotification("success", "Nice!", "top");
       navigate("/profile");
       dispatch(getUserInfo());
     }

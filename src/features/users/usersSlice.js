@@ -142,7 +142,6 @@ export const usersSlice = createSlice({
       state.users = users;
       state.userDetails = action.payload.userUnfollowed
       state.isUnFollowing = true;
-      state.isSuccess = true;
     })
     .addCase(unFollowUser.rejected, (state, action) => {
       state.message = action.payload

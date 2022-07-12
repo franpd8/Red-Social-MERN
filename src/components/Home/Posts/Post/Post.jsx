@@ -37,7 +37,7 @@ const Post = () => {
   };
   useEffect(() => {
     if (isLiked || isDisliked || isDeleted) {
-      openNotification("success", "holis", "top");
+      openNotification("success", "Nice!", "top");
     }
     dispatch(reset());
   }, [isLiked, isDisliked, isDeleted]);
