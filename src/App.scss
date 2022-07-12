@@ -2,31 +2,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Beginner:wght@700&family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 .margin {
-  margin-left: 25vw;
+  margin-left: 35vw;
   margin-top: 3em;
-}
-.home {
-  border: 2px solid black;
-  background-color: beige;
-  margin-right:4em;
-}
-.home__posts {
-  border: 2px solid red;
-  background-color: azure;
-  padding: 2em;
-}
-.home__posts__all {
-  border: 2px solid blue;
-  background-color: aquamarine;
-  padding: 1em;
-  display: flex;
-  flex-wrap: wrap;
-  .post {
-    border: 2px dotted white;
-    background-color: burlywood;
-    margin: 1em 0;
-    width: 50%;
-  }
 }
 
 
@@ -65,9 +42,7 @@
   }
 }
 
-.bio {
-  border: 1px solid purple;
-}
+
 // ----- Users Posts ----
 .userPosts {
   display: flex;

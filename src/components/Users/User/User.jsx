@@ -66,7 +66,12 @@ const User = () => {
               src={avatar ? avatar : "https://i.imgur.com/Svw4Sam.png"}
             />
           </div>
-          <div className="userName">{userdata.name}</div>
+          <div className="userName">{userdata.name}
+          {imFollowing ? (
+                    <>
+                      <div className="userIsFollowing">follows you </div>
+                    </>
+                  ) : <div className=" not userIsFollowing"> not follows</div>}{" "}</div>
         </Link>
 
 {/*  */}

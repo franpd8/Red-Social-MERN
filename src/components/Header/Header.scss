@@ -1,6 +1,6 @@
 
 .header {
-    width: 25vw;
+    width: 45vw;
     height: 100%;
     position: fixed;
   
@@ -16,7 +16,7 @@
           margin:2em 0 ;
           border-radius:8px;
           border: 1px solid darkgray;
-          background-color: #f6f9f9;
+          background-color: rgb(251, 251, 251);
           .userDescription{
               display:flex;
 
@@ -62,7 +62,7 @@
       .headerNav{
         border-radius:8px;
         border: 1px solid darkgray;
-        background-color: #f6f9f9;
+        background-color: rgb(251, 251, 251);
         padding:2em 0 ;
         display: flex;
         flex-direction: column;
@@ -72,6 +72,10 @@
       }
       .header-link {
         display:flex;
+      }
+      .header-link:hover{
+          background-color: #efefef;
+          box-shadow: -2px 0px 0px -0.2px rgba(0,0,0,1);
       }
       .selected{
         box-shadow: -2px 0px 0px -0.2px rgba(0,0,0,1);

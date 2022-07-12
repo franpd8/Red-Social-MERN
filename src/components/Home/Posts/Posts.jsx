@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllPosts, reset } from "../../../features/posts/postsSlice";
-import Post from "../../Post/Post";
+import Post from "./Post/Post";
 import { LoadingOutlined } from '@ant-design/icons';
 import "./../Posts.scss"
 import { Input } from "antd";
@@ -21,7 +21,7 @@ const Posts = () => {
   }, []);
 
   if (isLoading) {
-    return <div className="home__posts">  <LoadingOutlined
+    return <div>  <LoadingOutlined
     style={{
       fontSize: 24,
     }}
@@ -30,9 +30,7 @@ const Posts = () => {
   <h1>Cargando post...</h1>;</div>
   }
   return (
-    <div className="home__posts">
-      <h2>Posts</h2>
-
+    <div className="posts">
       <Post />
     </div>
   );

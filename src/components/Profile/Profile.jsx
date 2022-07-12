@@ -1,8 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
 import { getUserInfo } from "../../features/auth/authSlice";
-
-
+import "./Bio/Bio.scss"
 import Following from "./Following/Following";
 import UserPosts from "./UserPosts/UserPosts";
 import Follower from "./Follower/Follower";

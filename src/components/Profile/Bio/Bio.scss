@@ -1,5 +1,18 @@
+
+
+.profile,.userDetail{
+    border: 1px solid darkgray;
+    background-color: rgb(251, 251, 251);
+    overflow: auto;
+    position:fixed;
+    margin:1em 4em 0 0  ;
+    height:760px;
+     border-radius: 4px;
+     width:50%;
+}
 .userProfile {
-  position: relative;    
+  position: relative; 
+
     .userHeader{
         object-fit: cover;
         width:100%;
@@ -13,16 +26,15 @@
     margin-left: 5vw;
     border-radius: 100%;
     img {
-      height: 18vw;
+      height: 15vw;
       border-radius: 100%;
     }
   }
   .userProfile__info {
-    padding:  2vw 5vw 5vw ;
+    padding:  2vw 5vw 2vw ;
     .userButtons{
         position:absolute;
         right:5vw;
-       
         button, #submitEditBtn{
             margin-left:1vw;
             border-radius:30px;
@@ -57,11 +69,10 @@
     }
     .userNameFollow {
       display: flex;
-      padding-top:10vw;
+      padding-top:8vw;
       .userName {
           display: flex;
           font-weight: 500;
-         
        
       }
       .userIsFollowing {
@@ -78,10 +89,7 @@
         background-color: #F6F9F9;
       }
     }
-    .userEmail {
 
-      width: fit-content;
-    }
     .userStats {
       display: flex;
       .stats {
@@ -104,7 +112,7 @@
     }
     .userDescription {
     
-      margin: 2vw 0;
+      margin: 2em 0;
     }
 
     .userExtLink {

@@ -1,6 +1,7 @@
 .userPosts__post{
-    width:33%;
-    aspect-ratio: 1 / 1;
+    
+    width:33.33%;
+
 }
 .postTitle{
     color:black;
@@ -9,8 +10,8 @@
 }
 .container {
     position: relative;
-    width: 400px;
-    height:400px;
+    width:100%;
+ aspect-ratio: 1/1;
 
   }
 .overlay {
@@ -24,7 +25,6 @@
   }
   
   .container:hover .overlay {
- 
     background: rgba(0, 0, 0, .3);
   }
 

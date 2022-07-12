@@ -23,6 +23,7 @@
     .users__all {
       display: flex;
       flex-wrap: wrap;
+      margin-top: -1.2em;
   
       .user {
         margin: 2em auto ;
@@ -66,11 +67,13 @@
             display:flex;
            justify-content: center;
            margin-left:1em;
+           margin-bottom:1em;
            
             .userStat{
                 display:flex;
                 flex-direction: column;
                 text-align: center;
+               
          
                 .value{
                     font-weight: 700;
@@ -100,4 +103,20 @@
   }
 
 
-  
+  .userIsFollowing {
+  width: fit-content;
+    border: 1px solid darkgray;
+    text-transform: uppercase;
+    font-size: 10px;
+  margin: 1em auto 0 ;
+    padding:0  0.5em;
+    font-weight: 500;
+    border-radius: 2px;
+    background-color: #F6F9F9;
+  }
+ .not {
+    background-color: transparent;
+    border:none;
+    color:transparent;
+
+ } 

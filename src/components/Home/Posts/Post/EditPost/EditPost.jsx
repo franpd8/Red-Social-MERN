@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
+import {  DeleteOutlined} from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Modal, Form, InputNumber, Input } from "antd";
-import { updatePost } from "../../../features/posts/postsSlice";
+import { Button, Modal, Form,  Input,  Popconfirm } from "antd";
+import { updatePost,deletePost } from "../../../../../features/posts/postsSlice";
 const { TextArea } = Input;
 
 const EditPost = ({ visible, setVisible }) => {
@@ -10,8 +11,16 @@ const EditPost = ({ visible, setVisible }) => {
   const { post } = useSelector((state)=> state.posts)
   const handleCancel = () => {setVisible(false);};
   const dispatch = useDispatch();
+
+  const text = 'Are you sure to delete this post?';
+  const confirm = () => {
+    deleteAndClose()
+  };
+  const deleteAndClose = () =>{
+    dispatch(deletePost(post._id))
+    setVisible(false);
+  }
   const onFinish = (values) => {
- 
     const postWithId = { ...values, id: post._id };
     dispatch(updatePost(postWithId));
     setLoading(true);
@@ -46,6 +55,18 @@ const EditPost = ({ visible, setVisible }) => {
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
       >
+
+<Popconfirm placement="right" title={text} onConfirm={confirm} okText="Yes" cancelText="No">
+        <div className="alignBtn">
+          <Button  className="deleteBtn"> 
+                    <DeleteOutlined
+                   />
+                  </Button>
+                  </div>
+      </Popconfirm>
+
+      
+       
         <Form.Item
           label="Update your post's title"
           name="title"

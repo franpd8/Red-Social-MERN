@@ -2,10 +2,11 @@ import React, {useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getPostById, reset } from "../../../../features/posts/postsSlice";
-import CommenList from "./CommentList/CommenList";
 import { Link, useNavigate } from "react-router-dom";
-import { ArrowLeftOutlined } from '@ant-design/icons';
+import { ArrowLeftOutlined, MoreOutlined  } from '@ant-design/icons';
 import "./../../Posts.scss";
+
+
 
 
 const PostDetail = () => {
@@ -27,9 +28,17 @@ const PostDetail = () => {
 
   const handleClick = () =>{
     navigate(-1)
-
   }
 
+  let authorPostId = ""
+
+
+
+// 
+
+
+
+  // 
   return !load ? (
     <div className="users">
       <div className="userDetail">
@@ -41,13 +50,14 @@ const PostDetail = () => {
   ) : (
     <div className="postDetail">
       <div className="back">
-   <ArrowLeftOutlined  onClick={handleClick} />
+   <ArrowLeftOutlined  onClick={handleClick} /> <p className="postTitle">{post.title}</p>
     </div>
        <div className="post">
        <div className="postImage">
         <img src={post.img} />
       </div>
       <div className="postInfo">
+      <Link to={"/user/" + post.userId._id}>
       <div className="userInfo">
         <div className="userAvatar">
           <img src={post.userId.avatar} />
@@ -55,9 +65,11 @@ const PostDetail = () => {
         <div className="userRefs"><div className="userName">{post.userId.name}</div>
         <div className="userAlias">{"@"+post.userId.alias}</div>
         </div>
+       
       </div>
+      </Link>
       <div className="postDescription">
-      <p className="postTitle">{post.title}</p>
+      {/* <p className="postTitle">{post.title}</p> */}
       <p className="postBody">{post.body}</p>
       </div>
       </div>
@@ -66,6 +78,7 @@ const PostDetail = () => {
       {/* <div className="commentSection">
         <CommenList post={post} />
       </div> */}
+      
     </div>
   );
 };

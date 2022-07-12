@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createPost, reset } from "../../../features/posts/postsSlice";
 import { useNavigate } from "react-router-dom";
 import { Form, Input, Button, Modal, notification} from "antd";
-import EditPost from "../../Post/EditPost/EditPost";
+import EditPost from "../Posts/Post/EditPost/EditPost";
 
 const { TextArea } = Input;
 

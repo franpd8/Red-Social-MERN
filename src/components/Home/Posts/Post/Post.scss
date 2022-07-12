@@ -1,0 +1,99 @@
+.authorPost{
+display:flex;
+justify-content: space-between;
+background-color: #f6f9f9;
+border-bottom: 1px solid darkgray;
+.authorInfo {
+    display: flex;
+ 
+    background-color: #f6f9f9;
+    padding: 10px 0;
+    border-radius: 0px 8px 0px 0px;
+    color:black;
+    .authorAvatar {
+      margin-left: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 5vw;
+      height: 5vw;
+      border-radius: 100%;
+      img {
+        width: 4vw;
+        height: 4vw;
+        border-radius: 100%;
+      }
+    }
+    .authorRefs {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-left: 3px;
+    }
+  }
+  .authorButtons{
+      margin: 2em;
+  }
+}
+
+.post{
+   
+    border-bottom: 1px solid darkgray;
+    .post__img{
+        width:100%;
+    }
+    
+    .post__description{
+        margin:2em;
+        .post__title{
+            margin-top:1em;
+            font-weight: 600;
+            font-style: italic;
+            font-size:18px;
+            display: flex;
+            justify-content: space-between;
+            color:black;
+            .post__date{
+                font-weight: 500;
+                font-style: normal;
+                color: darkgray;
+                font-size:14px;
+            }
+        }
+        .post__like__btn{
+            display: flex;
+            align-items: center;
+            .like__counter{
+                margin-left:2em;
+            }
+        }
+    }
+
+}
+
+
+// Edit Post
+
+
+.ant-modal-content{
+    border-radius: 8px ;
+    border: 1px solid darkgray;
+}
+.ant-modal-header{
+    border-radius: 8px ;
+   
+  }
+  .ant-modal-footer{
+      display:none;
+  }
+ .alignBtn{
+     display: flex;
+  justify-content: flex-end;
+
+  .deleteBtn{
+    border-radius:20px;
+    padding: 4px 8px;
+
+    
+}
+ }

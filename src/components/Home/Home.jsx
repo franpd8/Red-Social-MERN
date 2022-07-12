@@ -1,10 +1,9 @@
-import AddPost from "./AddPost/AddPost";
+
 import Posts from "./Posts/Posts";
-import SearchPost from "../Navbar/SearchPost/SearchPost";
 import { BackTop } from "antd";
 import React, { useEffect } from "react";
 import { UpSquareFilled } from '@ant-design/icons';
-
+import "./Home.scss"
 
 const style = {
   height: 60,
@@ -32,7 +31,6 @@ const Home = () => {
 
   return (
     <div className="home">
-      
       {user?<>
       <Posts /> </> :null }
       <BackTop>

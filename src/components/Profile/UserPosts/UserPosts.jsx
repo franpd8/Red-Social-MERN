@@ -13,10 +13,10 @@ function UserPosts({ userData }) {
                 {" "}
                 <HeartFilled /> {post.likes.length}
               </div>
-              <div className="comments">
+              {/* <div className="comments">
                 {" "}
                 <MessageFilled /> {post.comments.length}
-              </div>
+              </div> */}
             </div>
             <img
               className="image"

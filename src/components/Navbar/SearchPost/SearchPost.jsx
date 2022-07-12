@@ -9,12 +9,12 @@ const SearchPost = () => {
         navigate("/search/posts/" + value);
       };
   return (
-    <div><Search
+   <Search
     placeholder="Search for a post"
     className="searchBar"
     onSearch={onSearch}
     enterButton
-  /></div>
+  />
   )
 }
 

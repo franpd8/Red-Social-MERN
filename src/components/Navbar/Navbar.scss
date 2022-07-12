@@ -1,45 +1,59 @@
-.navbar{
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
+.align{
+    display: flex;
+    justify-content: center;
+    margin:3em auto 2em;
+    height:2em;
     background-color: white;
-
-    margin-top:-3em;
-
-    width: 100vw;
-    padding:0 4em 1.2em;
-    position: fixed;
+   
+  
+}
 
 
-.logo{
-    display:flex;
+.navbar {
+  display: flex;
+  justify-content: space-between;
+width:100%;
+  background-color: white;
+align-self: center;
+ 
+height:2em;
+//   width: 70vw;
+// margin: 2em auto 0;
+  padding:4em 18em 4em 18em ;
+  position: fixed;
+
+  .logo {
+    display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
     align-items: center;
-    margin-left: 7.5em;
-    .logoApp{
-        height:32px;
-        margin: 0 16px;
-    }
-    .logoName{
-        font-family: 'Edu VIC WA NT Beginner', cursive;
-        font-size: 32px;
-    }
-}
-
-.searchBar {
-    width: 30vw;
-    margin-top:1.2em;
-
-    .ant-input {
-        border-radius: 6px 0px 0px 6px;
-      }
-      .ant-btn{
-        border-radius: 0px 6px 6px 0px !important;
-        background-color: black;
-
-      }
+    margin-left: 3.5em;
+    margin-top:-2em;
     
+    .logoApp {
+      height: 32px;
+      margin: 0 16px;
+    }
+    .logoName {
+      font-family: "Edu VIC WA NT Beginner", cursive;
+      font-size: 32px;
+      color:black;
+    }
   }
 
+  .searchBar {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    width: 30vw;
+
+    .ant-input {
+      border-radius: 6px 0px 0px 6px;
+    }
+    .ant-btn {
+      border-radius: 0px 6px 6px 0px !important;
+      background-color: black;
+      border:1px solid black;
+    }
+  }
 }
