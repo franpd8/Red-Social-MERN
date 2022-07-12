@@ -1,5 +1,4 @@
 import AddPost from "./AddPost/AddPost";
-import Login from "./../../components/Login/Login";
 import Posts from "./Posts/Posts";
 import SearchPost from "./Posts/SearchPost/SearchPost";
 import { BackTop } from "antd";

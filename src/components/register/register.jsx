@@ -1,4 +1,4 @@
-import { useLocation} from"react-router"
+import {  useNavigate,Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { register, reset } from "../../features/auth/authSlice";
@@ -9,7 +9,7 @@ const Register = () => {
 
   const dispatch = useDispatch();
   const { isSuccess, isError, message } = useSelector((state) => state.auth);
-
+  const navigate = useNavigate();
   useEffect(() => {
     if (isSuccess) {
       notification.success({
@@ -39,6 +39,9 @@ const Register = () => {
   return (
       
     <>
+     <span>
+              <Link to="/login">Login</Link>
+            </span>
     <Form
        name="register"
        onFinish={onFinish}

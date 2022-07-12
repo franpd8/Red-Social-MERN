@@ -38,6 +38,9 @@ function EditBio({ userData,edit,setEdit }) {
         <Form.Item name="name"        >
           <Input  showCount maxLength={20}  placeholder={userData.name} />
         </Form.Item>
+        <Form.Item name="alias"        >
+          <Input  showCount maxLength={20}  placeholder={"@"+userData.alias} />
+        </Form.Item>
         <Form.Item name="bio" >
           <TextArea  rows={4} showCount maxLength={100} placeholder={userData.bio} />
         </Form.Item>

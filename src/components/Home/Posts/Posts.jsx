@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllPosts, reset } from "../../../features/posts/postsSlice";
 import Post from "../../Post/Post";
 import { LoadingOutlined } from '@ant-design/icons';
-
+import "./../Posts.scss"
 import { Input } from "antd";
 
 const { Search } = Input;
@@ -25,7 +25,7 @@ const Posts = () => {
     style={{
       fontSize: 24,
     }}
-    spin
+  
   /> 
   <h1>Cargando post...</h1>;</div>
   }

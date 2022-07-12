@@ -59,18 +59,23 @@
       display: flex;
       padding-top:10vw;
       .userName {
-      
-        margin-right: 1em;
+          display: flex;
+          font-weight: 500;
+         
+       
       }
       .userIsFollowing {
         display: flex;
         align-self: center;
-        border: 1px solid purple;
+        margin-left: 1em;
+        border: 1px solid darkgray;
         text-transform: uppercase;
         font-size: 10px;
-        padding: 0.3em 0.8em;
-        font-weight: 700;
-        border-radius: 8px;
+        margin-top:0.2em;
+        padding:0  0.5em;
+        font-weight: 500;
+        border-radius: 2px;
+        background-color: #F6F9F9;
       }
     }
     .userEmail {

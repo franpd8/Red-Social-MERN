@@ -58,11 +58,11 @@ const [edit,setEdit] = useState(initialValue);
       {edit? <>
         <div className="userNameFollow">
         <div className="userBio">
-          <div className="userName"> {userData.name} </div>
-          {imFollowed? <><div className="userIsFollowing">follows you </div></>: null }
+          <div className="userName"> {userData.name}  {imFollowing? <><div className="userIsFollowing">follows you </div></>: null }  </div>
+         <div className="userAlias">{"@"+userData.alias}</div>
         
-        <div className="userEmail">{userData.email}</div>
-        {/* Comentado porque explota :(  */}
+        {/* <div className="userEmail">{userData.email}</div> */}
+
         <div className="userStats">
           <div className="userFollowing">
             <span className="stats">{userData?.following.length}</span> Following{" "}

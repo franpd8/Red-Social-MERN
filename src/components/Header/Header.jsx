@@ -22,14 +22,17 @@ const Header = () => {
   
   useEffect(() => {
     if (isSuccessLogOut) {
-      openNotification("success","Log out Succesfully :)","top")
+     
     }   
     
   }, [isSuccessLogOut]);
 
   const onLogout = (e) => {
-    
-    dispatch(logout());
+    openNotification("success","Log out Succesfully :)","top")
+    setTimeout(() => {
+      dispatch(logout());
+    }, 2000);
+
   };
 
 // if(pathname == "/login"){
