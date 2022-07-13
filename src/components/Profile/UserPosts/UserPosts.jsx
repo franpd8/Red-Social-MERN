@@ -11,7 +11,8 @@ function UserPosts({ userData }) {
             <div className="overlay__hover">
               <div className="likes">
                 {" "}
-                <HeartFilled /> {post.likes.length}
+                <HeartFilled /> 
+                {post.likes.length}
               </div>
               {/* <div className="comments">
                 {" "}

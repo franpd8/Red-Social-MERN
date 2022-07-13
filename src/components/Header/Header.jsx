@@ -29,11 +29,7 @@ const Header = () => {
     });
   };
 
-  useEffect(() => {
-    if (isSuccessLogOut) {
-    }
-  }, [isSuccessLogOut]);
-
+ const avatar = userData.avatar
   const onLogout = (e) => {
     openNotification("success", "Log out Succesfully :)", "top");
     setTimeout(() => {
@@ -51,12 +47,13 @@ const Header = () => {
         <div>
           {user ? (
             <>
-            
+
               <div className="userInfo">
               <Link to={"/profile"}>
                 <div className="userDescription">
                   <div className="userAvatar">
-                    <img src={userData.avatar} />
+                    <img src={avatar ? avatar : "https://i.imgur.com/Svw4Sam.png"} />
+                    
                   </div>
                   <div className="userRefs">
                     <div className="userName">{userData.name}</div>

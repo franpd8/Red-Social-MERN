@@ -53,7 +53,7 @@ const PostDetail = () => {
   ) : (
     <div className="postDetail">
       <div className="back">
-        <ArrowLeftOutlined onClick={handleClick} />{" "}
+        <ArrowLeftOutlined onClick={handleClick} />
         <p className="postTitle">{post.title}</p>
       </div>
       <div className="post">
@@ -84,6 +84,7 @@ const PostDetail = () => {
 
           <div className="postDescription">
             <p className="postBody">{post.body}</p>
+           
           </div>
         </div>
       </div>

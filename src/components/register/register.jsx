@@ -13,13 +13,17 @@ const Register = () => {
   useEffect(() => {
     if (isSuccess) {
       notification.success({
-        message: "Éxito :)",
+        message: "Nice!",
         description: message,
       });
+      setTimeout(() => {
+        navigate("/login");
+      }, 1000);
+     
     }
     if (isError) {
       notification.error({
-        message: "Error :( ",
+        message: "Oops!",
         description: message,
       });
     }
@@ -62,7 +66,7 @@ const Register = () => {
 Join <span className="logo">Chirp</span> </h2>
 </div>
        <Form.Item
-         label="Name"
+         label="Full Name"
          name="name"
          rules={[
            {
@@ -74,6 +78,22 @@ Join <span className="logo">Chirp</span> </h2>
          <Input
            placeholder="Enter your name here"
          />
+         
+       </Form.Item>
+       <Form.Item
+         label="@alias"
+         name="alias"
+         rules={[
+           {
+             required: true,
+             message: "Alias is necessary",
+           },
+         ]}
+       >
+         <Input
+           placeholder="Enter your @alias here"
+         />
+         
        </Form.Item>
        <Form.Item
          label="Email"
