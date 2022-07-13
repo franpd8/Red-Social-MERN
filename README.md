@@ -1,5 +1,5 @@
 #  React Ecommerce
-![foto](https://i.imgur.com/qpWG5wc.gif)
+![foto](https://i.imgur.com/QnVIW1s.gif)
 ## Índice
 
 * Sobre el proyecto
@@ -97,16 +97,23 @@ Crear una API REST que sea capaz de lo siguiente:
 
 ### ⚔️ Funciones
 
+
 En esta red social, el usuario puede acceder a diferentes páginas para ver las publicaciones de distintos usuarios. 
 
 <br>
 
 Para este sencillo ejercicio hemos creado cuatro vistas: home, people, profile, y además el buscador de post.
 <br>
+
+![foto](https://i.imgur.com/QnVIW1s.gif)
+
 > <b>Home</b> <br/>
 En la home encontramos diferentes creatividades que sirven como enlace a las distintas secciones de la aplicación. En home se pueden todas las publicaciones de los diferentes usuarios. En dichas publicaciones se muestra la imagen, el contador de likes y la descripción de la publicación.  <br> —— Al hacer click en la imagen nos llevará a la publicación en detalle con información extra.  <br> —— Al hacer click en el corazón, sumará un like al contador. 
 
 <br>
+
+![foto](https://imgur.com/B0C153g.gif)
+
 
 ><b>Perfil</b>
 <br> En la página de perfil mostramos la información del usuario conectado en ese momento. Se puede ver nombre, biografía, enlace externo así como editar estos campos. Dentro del perfil tenemos además las publicaciones realizadas por el mismo, los usuarios a quien sigue, y los usuarios que le siguen.
@@ -118,11 +125,14 @@ En la home encontramos diferentes creatividades que sirven como enlace a las dis
 
 <br>
 
+![foto](https://imgur.com/VgPYCTD.gif)
+
 ><b>Personas</b><br> Mostramos los usuarios registrados en la plataforma, indicando sus estadísticas, si los seguimos o si nos siguen ellos. 
 <br> —— Al hacer click en sus tarjetas podremos acceder a su perfil.
 
 <br>
 
+![foto](https://i.imgur.com/VgPYCTD.gif)
 
 ><b>Perfil de usuarios</b><br>
 Muestra toda la información del usuarios que estamos visitando, su descripción, sus estadísticas y publicaciones.  <br> —— Aparece la opción de seguir al usuario en caso de no hacerlo. 
@@ -134,36 +144,22 @@ Muestra toda la información del usuarios que estamos visitando, su descripción
 <br> En la barra superior de la plataforma podemos hacer una búsqueda de publicaciones por nombre. Las publicaciones que coincidan se mostrarán y podremos acceder a ellas. 
 <br>—— Al hacer click en la imagen nos llevará a la publicación en detalle con información extra.
 
-![foto](https://i.imgur.com/4i86nMj.png)
-—— Filtrar por categorías——<br>en todas las secciones contamos además con un filtro que limite los resultados según la categoría de prendas mostradas. Camisetas/T-shirts, Pantalones/Trousers, Sudaderas/Hoodies y Accesorios/Accesories. 
-![foto](https://i.imgur.com/feQChyO.png)
-—— Carrito de compra——<br>
- Hemos implementado un carrito que permita introducir productos en él. Si no hay productos en él mostrará el enlace a la vista de productos. Conforme se vayan añadiendo aparecerá una notificación temporal en pantalla para informar al usuario de esta acción. Dentro del carrito se mostrarán los productos añadidos y podrá realizar el pedido. En el caso de no estar logueado, redigirá a la pantalla de login, donde podrá ingresar y retomar el pedido. 
-![foto](https://i.imgur.com/2etidth.png)
-![foto](https://i.imgur.com/HKPywMP.png)
+![foto](https://imgur.com/Dwlw2ky.gif)
+><b>Crear publicaciones </b>
+El usuario puede crear publicaciones que se añadirán automáticamente al feed de home. 
+
+
+
+
+![foto](https://i.imgur.com/cyPZ5Sf.png)
 —— Login——<br>
 La pantalla de login resulta sencilla y permite acceder al usuario introduciendo sus campos. De no ser un usuario registrado puede acceder a la pantalla de registro desde el login directamente. Mostramos notificación para informar al usuario de su proceso exitoso.
 
-![foto](https://i.imgur.com/Q7wSncF.png)
+![foto](https://i.imgur.com/OXgoweF.png)
 
 —— Registro——<br>
 Similar a la pantalla de login nos permite crear nuevos usuarios e ingresarlos en la base de datos para posteriormente hacer login. Mostramos notificación para informar al usuario de su proceso exitoso. Al registrarnos se nos redirigirá a la pantalla de login. 
 ![foto](https://i.imgur.com/VVlzRV7.png)
-—— Perfil de usuario——<br>
-En el perfil de usuario podemos acceder a la información persona, al historial de pedidos y el logout. La información personal podemos modificarla en caso de querer actualizar alguno de los campos.  El historial de pedidos se muestra con más recientes primero, indicando los productos que hay en cada uno de ellos. 
-![foto](https://i.imgur.com/NjspMGw.png)
-![foto](https://i.imgur.com/b8HQOFH.png)
-## 🔜 Retos presentados
-
-—— Adaptar backend ——<br>
-Tomando como partida un backend anterior hecho con Sequelize realizamos cambios en las tablas y los controladores. Creamos desde cero los modelos para almacenar productos y categorias. Y rellenamos con nuevos Seed para ampliar el catálogo de la tienda.  Además, varios endpoint del backend necesitaron ser adaptados e incorporados, ya que la estructura base no encajaba del todo. 
-
-—— Incorporar imágenes ——<br>
-Añadimos imágenes para todos los productos directamente en la base de datos, de esta forma se pueden mostrar en el frontend directamente. 
-
-
-—— Filtrar Productos ——<br>
-Crear una función para mostrar solo los productos que coincidan con una única categoría, pudiendo ser esta los tipos de prenda. Además de ordenar los productos según su precio de mayor a menor o viceversa. 
 
 
 ## 🔜 Futuras Implementaciones
@@ -171,11 +167,9 @@ Crear una función para mostrar solo los productos que coincidan con una única 
 * Diseño responsive. 
 * Corregir bugs 
 * Añadir imágenes de forma local
-* Permitir a los usuarios <i>guardar productos en favoritos.</i>
-* Añadir <i>Valoraciones</i> a los productos.
-* Añadir <i> Vista de Administrador</i> y CRUD de productos. 
-* Añadir Breadcrums a la pagina de productos. 
-
+* Añadir edición de publicaciones en vista de detalle.
+* Añadir <i>Comentarios</i> a las publicaciones.
+* Ver las publicaciones que han gustado al usuario.
 
 ##  ♥️ Agradecimientos
 
