@@ -105,6 +105,12 @@ const AddPost = () => {
           <Form.Item
             label="Picture of your post"
             name="img"
+            rules={[
+              {
+                required: true,
+                message: "Your post must have a title",
+              },
+            ]}
           >
             <Input />
           </Form.Item>

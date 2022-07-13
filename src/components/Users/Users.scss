@@ -1,11 +1,9 @@
-
 .users {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     margin: 0 auto; 
     height:40vh;
-
   .usersLoader{
       position:relative;
       top:50%;
@@ -15,11 +13,8 @@
         width:50%;
         height:auto;
         margin: 0 auto;
-    
 }
-
   }
-  
     .users__all {
       display: flex;
       flex-wrap: wrap;
