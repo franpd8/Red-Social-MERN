@@ -8,7 +8,6 @@ import {
   MoreOutlined ,
 } from "@ant-design/icons";
 import {
-  deletePost,
   dislikePost,
   likePost,
   reset,

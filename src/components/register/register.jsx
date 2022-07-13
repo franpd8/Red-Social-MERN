@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { register, reset } from "../../features/auth/authSlice";
 import { notification } from "antd";
 import { Button, Form, Input } from "antd";
-
+import "./Register.scss"
 const Register = () => {
 
   const dispatch = useDispatch();
@@ -39,9 +39,13 @@ const Register = () => {
   return (
       
     <>
-     <span>
-              <Link to="/login">Login</Link>
-            </span>
+     <div className="register">
+<div className="bckground">
+  <img src="https://i.imgur.com/DnPioN4.jpg"/>
+  
+</div>
+     
+            <div className="register__form">
     <Form
        name="register"
        onFinish={onFinish}
@@ -53,6 +57,10 @@ const Register = () => {
          span: 24,
        }}
      >
+        <div className="clam">
+<h2> What's going on? <br/>
+Join <span className="logo">Chirp</span> </h2>
+</div>
        <Form.Item
          label="Name"
          name="name"
@@ -133,11 +141,16 @@ const Register = () => {
            htmlType="submit"
            className="login-form-button"
          >
-           Crear cuenta
+           Create Account
          </Button>
        </Form.Item>
+       <div className="login">
+  
+        <Link to="/login">Login</Link></div>
+          
       
      </Form>
+     </div></div>
     </>
   )
 };

@@ -17,6 +17,7 @@
           border-radius:8px;
           border: 1px solid darkgray;
           background-color: rgb(251, 251, 251);
+          a{color:black;}
           .userDescription{
               display:flex;
 
@@ -68,6 +69,12 @@
         flex-direction: column;
         justify-content: space-between;
         height:20vw;
+        a {
+            margin: 0 2em ;
+            display:flex;
+           align-items: center;
+           color:rgb(61, 60, 60);
+           font-weight: 500;
         
       }
       .header-link {
@@ -89,12 +96,7 @@
           color:black;
         }
       }
-      a {
-        margin: 0 2em ;
-        display:flex;
-       align-items: center;
-       color:rgb(61, 60, 60);
-       font-weight: 500;
+     
   
   
         .header-icon{

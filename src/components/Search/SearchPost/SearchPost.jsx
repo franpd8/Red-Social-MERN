@@ -1,7 +1,7 @@
 import React from 'react'
 import { Input } from "antd";
 import { useNavigate } from "react-router-dom";
-import "./../Navbar.scss"
+import "./../../Navbar/Navbar.scss"
 const { Search } = Input;
 const SearchPost = () => {
     const navigate = useNavigate();

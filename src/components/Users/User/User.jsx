@@ -57,8 +57,8 @@ const User = () => {
     const userFollowers = userdata.followers?.map((user) => user._id);
     const loggedUserId = userData._id;
     let imFollowing = userFollowers.includes(loggedUserId);
-    console.log("¿le sigo?", imFollowing);
     
+
    
     return (
       <div className="user" key={userdata._id}>

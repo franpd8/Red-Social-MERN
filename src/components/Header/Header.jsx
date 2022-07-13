@@ -51,7 +51,9 @@ const Header = () => {
         <div>
           {user ? (
             <>
+            
               <div className="userInfo">
+              <Link to={"/profile"}>
                 <div className="userDescription">
                   <div className="userAvatar">
                     <img src={userData.avatar} />
@@ -75,7 +77,9 @@ const Header = () => {
                     Following
                   </div>
                 </div>
+                </Link>
               </div>
+              
 
               <div className="headerNav">
                 <div

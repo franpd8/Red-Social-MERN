@@ -1,5 +1,5 @@
 
-import SearchPost from "./SearchPost/SearchPost"
+import SearchPost from "../Search/SearchPost/SearchPost"
 import "./Navbar.scss"
 import { Link, useNavigate } from "react-router-dom";
 const Navbar = () => {

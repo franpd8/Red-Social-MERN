@@ -2,8 +2,7 @@ import { useLocation} from"react-router"
 import { useDispatch, useSelector } from "react-redux";
 import {  useNavigate,Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-
-
+import "./Login.scss"
 import { getUserInfo, login, reset } from "../../features/auth/authSlice";
 import { notification } from "antd";
 import { Button, Form, Input } from "antd";
@@ -49,12 +48,12 @@ const Login = () => {
   
   return (
 
-    <>
-   
-            <span>
-              <Link to="/register">Register</Link>
-            </span>
-
+    <> <div className="login">
+<div className="bckground">
+  <img src="https://i.imgur.com/XzFF73r.jpg"/>
+  
+</div>
+<div className="login__form">
     <Form
       name="login"
       onFinish={onFinish}
@@ -66,6 +65,11 @@ const Login = () => {
         span: 24,
       }}
     >
+      <div className="clam">
+<h2> What's going on? <br/>
+Join <span className="logo">Chirp</span> </h2>
+</div>
+      
       <Form.Item
         label="Email"
         name="email"
@@ -97,12 +101,18 @@ const Login = () => {
         <Button
           style={{ width: "100%" }}
           htmlType="submit"
+          type="primary"
           className="login-form-button"
         >
-          Iniciar sesion
+          Login
         </Button>
       </Form.Item>
+      <div className="register">
+              <Link to="/register">Register</Link>
+            </div>
     </Form>
+    </div>
+    </div>
     </>
   );
 };
