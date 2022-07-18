@@ -105,7 +105,7 @@ En esta red social, el usuario puede acceder a diferentes páginas para ver las 
 Para este sencillo ejercicio hemos creado cuatro vistas: home, people, profile, y además el buscador de post.
 <br>
 
-![foto](https://i.imgur.com/QnVIW1s.gif)
+
 
 > <b>Home</b> <br/>
 En la home encontramos diferentes creatividades que sirven como enlace a las distintas secciones de la aplicación. En home se pueden todas las publicaciones de los diferentes usuarios. En dichas publicaciones se muestra la imagen, el contador de likes y la descripción de la publicación.  <br> —— Al hacer click en la imagen nos llevará a la publicación en detalle con información extra.  <br> —— Al hacer click en el corazón, sumará un like al contador. 
@@ -159,7 +159,7 @@ La pantalla de login resulta sencilla y permite acceder al usuario introduciendo
 
 —— Registro——<br>
 Similar a la pantalla de login nos permite crear nuevos usuarios e ingresarlos en la base de datos para posteriormente hacer login. Mostramos notificación para informar al usuario de su proceso exitoso. Al registrarnos se nos redirigirá a la pantalla de login. 
-![foto](https://i.imgur.com/VVlzRV7.png)
+
 
 
 ## 🔜 Futuras Implementaciones
