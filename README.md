@@ -1,4 +1,4 @@
-#  React Ecommerce
+#  React Red Social 
 ![foto](https://i.imgur.com/QnVIW1s.gif)
 ## Índice
 
